@@ -1,0 +1,37 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/typescript-node
+{
+  "name": "Node.js & TypeScript",
+  // Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+  "image": "mcr.microsoft.com/devcontainers/typescript-node:20",
+  // Features to add to the dev container. More info: https://containers.dev/features.
+  "features": {
+    "node": {
+      "version": "20.11.1"
+    },
+    "ghcr.io/devcontainers-contrib/features/typescript:2": {
+      "version": "5.6.2"
+    },
+    "ghcr.io/devcontainers-contrib/features/angular-cli:2": {
+      "version": "19.0.0"
+    },
+    "ghcr.io/devcontainers-contrib/features/nx-npm:1": {
+      "version": "20.3.3"
+    }
+  },
+  // Configure tool-specific properties.
+  "customizations": {
+    "vscode": {
+      "extensions": []
+    }
+  },
+  // Use 'forwardPorts' to make a list of ports inside the container available locally.
+  "forwardPorts": [],
+  // Use 'postCreateCommand' to run commands after the container is created.
+  "postCreateCommand": "bash /workspaces/project-name/.devcontainer/post-create.sh",
+  // Use 'postStartCommand' to run commands after the container is started.
+  "postStartCommand": "",
+  // Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+  "remoteUser": "node",
+  "mounts": []
+}
