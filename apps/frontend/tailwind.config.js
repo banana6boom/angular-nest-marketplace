@@ -8,11 +8,8 @@ module.exports = {
     ...createGlobPatternsForDependencies(__dirname),
   ],
   theme: {
-    extend: {
-      colors: {
-        primary: "#ff5733",
-      },
-    },
+    extend: {},
   },
-  plugins: [],
+  plugins: [require('tailwindcss-primeui')],
 };
+

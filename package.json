@@ -26,9 +26,12 @@
     "@nestjs/common": "^10.0.2",
     "@nestjs/core": "^10.0.2",
     "@nestjs/platform-express": "^10.0.2",
+    "@primeng/themes": "^19.0.5",
     "axios": "^1.6.0",
+    "primeng": "^19.0.5",
     "reflect-metadata": "^0.1.13",
     "rxjs": "~7.8.0",
+    "tailwindcss-primeui": "^0.4.0",
     "zone.js": "~0.15.0"
   },
   "devDependencies": {

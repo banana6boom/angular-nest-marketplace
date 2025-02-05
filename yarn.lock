@@ -3485,6 +3485,25 @@
   resolved "https://registry.yarnpkg.com/@pkgjs/parseargs/-/parseargs-0.11.0.tgz#a77ea742fab25775145434eb1d2328cf5013ac33"
   integrity sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg==
 
+"@primeng/themes@^19.0.5":
+  version "19.0.5"
+  resolved "https://registry.yarnpkg.com/@primeng/themes/-/themes-19.0.5.tgz#5e80c9bb28b4274db2967ad2f5bb1b77cf007ec7"
+  integrity sha512-HHXAncyolxyuOR5p+7XtcY3Hg1J6MzbjrdVY3BoQZrRR0nQmatOUQkG/whmJ2dsATq2UHgOykT/a2s70kFF1Sw==
+  dependencies:
+    "@primeuix/styled" "^0.3.2"
+
+"@primeuix/styled@^0.3.2":
+  version "0.3.2"
+  resolved "https://registry.yarnpkg.com/@primeuix/styled/-/styled-0.3.2.tgz#a6093e81a66fc78b915b5e8d998cc73c2c47a1dc"
+  integrity sha512-ColZes0+/WKqH4ob2x8DyNYf1NENpe5ZguOvx5yCLxaP8EIMVhLjWLO/3umJiDnQU4XXMLkn2mMHHw+fhTX/mw==
+  dependencies:
+    "@primeuix/utils" "^0.3.2"
+
+"@primeuix/utils@^0.3.2":
+  version "0.3.2"
+  resolved "https://registry.yarnpkg.com/@primeuix/utils/-/utils-0.3.2.tgz#dbf92f6b5e18abe214f592a0b51bf4ca02a1f808"
+  integrity sha512-B+nphqTQeq+i6JuICLdVWnDMjONome2sNz0xI65qIOyeB4EF12CoKRiCsxuZ5uKAkHi/0d1LqlQ9mIWRSdkavw==
+
 "@rollup/rollup-android-arm-eabi@4.26.0":
   version "4.26.0"
   resolved "https://registry.yarnpkg.com/@rollup/rollup-android-arm-eabi/-/rollup-android-arm-eabi-4.26.0.tgz#f221c519a6efb5d3652bff32351522e0fb98e392"
@@ -10125,6 +10144,15 @@ pretty-format@^29.0.0, pretty-format@^29.7.0:
     ansi-styles "^5.0.0"
     react-is "^18.0.0"
 
+primeng@^19.0.5:
+  version "19.0.5"
+  resolved "https://registry.yarnpkg.com/primeng/-/primeng-19.0.5.tgz#472b67bc9ac0a1d92f63f35956b4f091f019d649"
+  integrity sha512-3IMWTUykIyZpT7d+pD7KzB+68GcY8/xOV10V1Tf09cPkPuwXlFP+NAVGIqAOXBzkw+RmJksSBoa13bpS/fMo1g==
+  dependencies:
+    "@primeuix/styled" "^0.3.2"
+    "@primeuix/utils" "^0.3.2"
+    tslib "^2.3.0"
+
 proc-log@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/proc-log/-/proc-log-3.0.0.tgz#fb05ef83ccd64fd7b20bbe9c8c1070fc08338dd8"
@@ -11222,6 +11250,11 @@ symbol-tree@^3.2.4:
   version "3.2.4"
   resolved "https://registry.yarnpkg.com/symbol-tree/-/symbol-tree-3.2.4.tgz#430637d248ba77e078883951fb9aa0eed7c63fa2"
   integrity sha512-9QNk5KwDF+Bvz+PyObkmSYjI5ksVUYtjW7AU22r2NKcfLJcXp96hkDWU3+XndOsUb+AQ9QhfzfCT2O+CNWT5Tw==
+
+tailwindcss-primeui@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/tailwindcss-primeui/-/tailwindcss-primeui-0.4.0.tgz#bfddbeb06a731168bf8dc981ddfdb68e0985d100"
+  integrity sha512-YYC7B7Yyzm1/4pEGgpf1ABAhbrKY++LuPoUamnKE7fTPO5Ct/Qr/dT+Uq2yiVhQnaW1zHQpYnThxfksaxhlDfQ==
 
 tailwindcss@4.0.3, tailwindcss@^4.0.0:
   version "4.0.3"
