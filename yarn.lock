@@ -10144,10 +10144,15 @@ pretty-format@^29.0.0, pretty-format@^29.7.0:
     ansi-styles "^5.0.0"
     react-is "^18.0.0"
 
-primeng@^19.0.5:
-  version "19.0.5"
-  resolved "https://registry.yarnpkg.com/primeng/-/primeng-19.0.5.tgz#472b67bc9ac0a1d92f63f35956b4f091f019d649"
-  integrity sha512-3IMWTUykIyZpT7d+pD7KzB+68GcY8/xOV10V1Tf09cPkPuwXlFP+NAVGIqAOXBzkw+RmJksSBoa13bpS/fMo1g==
+primeicons@^7.0.0:
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/primeicons/-/primeicons-7.0.0.tgz#6b25c3fdcb29bb745a3035bdc1ed5902f4a419cf"
+  integrity sha512-jK3Et9UzwzTsd6tzl2RmwrVY/b8raJ3QZLzoDACj+oTJ0oX7L9Hy+XnVwgo4QVKlKpnP/Ur13SXV/pVh4LzaDw==
+
+primeng@^19.0.6:
+  version "19.0.6"
+  resolved "https://registry.yarnpkg.com/primeng/-/primeng-19.0.6.tgz#d4205e663aef4806a74271ca04ccb260557bef90"
+  integrity sha512-IyzkI12VlR3cy2wy47VtPzVzugs2QI6o0qI369RD6gFN9SI5K9pM/dAFn4v6MfaN+AtnVuPrfjH96gxj6CrbcA==
   dependencies:
     "@primeuix/styled" "^0.3.2"
     "@primeuix/utils" "^0.3.2"

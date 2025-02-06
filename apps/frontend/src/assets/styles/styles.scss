@@ -1,10 +1,60 @@
 @use "tailwindcss";
-@use "tailwindcss/preflight";
-@use "tailwindcss/utilities";
 @use "fonts";
 
+@theme {
+  --font-family: "Causten", sans-serif;
+  --second-family: "CoreSansC", sans-serif;
+  --third-family: "Mintaka", sans-serif;
+  --font3: "Roboto", sans-serif;
+  --font4: "Poppins", sans-serif;
+  --font5: "Manrope", sans-serif;
+  --font6: "Montserrat", sans-serif;
+}
 
-@layer utilities {
+p-accordion-panel {
+  border-bottom: 1px solid rgba(190, 188, 189, 0.4) !important;
+  border-top: 1px solid rgba(190, 188, 189, 0.4) !important;
+}
+
+p-accordion-header {
+  color: var(--primary-color)!important;
+  background-color: #3c4242!important;
+}
+
+.p-accordion-panel {
 
 }
+
+.p-accordioncontent-content {
+
+  background-color: #3c4242!important;
+
+  p {
+    color: #f6f6f6;
+  }
+}
+
+@layer components {
+  .footer-head {
+    @apply font-family;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 217%;
+    color: #f6f6f6;
+  }
+
+  .footer-items {
+    @apply space-y-2;
+  }
+
+  .footer-items ul li {
+    @apply font-family;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 217%;
+    color: #f6f6f6;
+  }
+
+}
+
 

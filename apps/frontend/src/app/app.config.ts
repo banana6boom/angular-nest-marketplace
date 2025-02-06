@@ -11,6 +11,7 @@ export const appConfig: ApplicationConfig = {
     provideRouter(appRoutes),
     provideAnimationsAsync(),
     providePrimeNG({
+      ripple: true, // Включает эффект ripple (инициализация PrimeNG API)
       theme: {
         preset: Aura,
         options: {
