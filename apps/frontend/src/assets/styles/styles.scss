@@ -1,15 +1,15 @@
 @use "tailwindcss";
 @use "fonts";
+@use "primeicons/primeicons.css";
 
 @theme {
   --font-family: "Causten", sans-serif;
   --second-family: "CoreSansC", sans-serif;
-  --third-family: "Mintaka", sans-serif;
-  --font3: "Roboto", sans-serif;
-  --font4: "Poppins", sans-serif;
-  --font5: "Manrope", sans-serif;
-  --font6: "Montserrat", sans-serif;
 }
+
+$color-header: #807d7e;
+$color-active: #3c4242;
+
 
 p-accordion-panel {
   border-bottom: 1px solid rgba(190, 188, 189, 0.4) !important;
@@ -17,8 +17,8 @@ p-accordion-panel {
 }
 
 p-accordion-header {
-  color: var(--primary-color)!important;
-  background-color: #3c4242!important;
+  color: var(--primary-color) !important;
+  background-color: #3c4242 !important;
 }
 
 .p-accordion-panel {
@@ -27,15 +27,21 @@ p-accordion-header {
 
 .p-accordioncontent-content {
 
-  background-color: #3c4242!important;
+  background-color: #3c4242 !important;
 
   p {
     color: #f6f6f6;
   }
 }
 
+.p-dropdown {
+  height: 44px !important;
+  border: none!important;
+  align-items: center!important;
+}
+
 @layer components {
-  .footer-head {
+  .footer-title {
     @apply font-family;
     font-weight: 700;
     font-size: 28px;
@@ -43,16 +49,36 @@ p-accordion-header {
     color: #f6f6f6;
   }
 
-  .footer-items {
-    @apply space-y-2;
-  }
 
-  .footer-items ul li {
+  .footer-menu li {
     @apply font-family;
     font-weight: 500;
     font-size: 18px;
     line-height: 217%;
     color: #f6f6f6;
+  }
+
+  .menu li {
+    @apply font-family;
+    font-weight: 500;
+    font-size: 22px;
+    color: $color-header;
+
+    &.active {
+      color: $color-active;
+    }
+  }
+
+  .auth-button {
+    @apply px-[48px] py-[9px] text-center text-lg font-medium font-family h-[46px] inline-block rounded-lg;
+    border: 1px solid #3c4242;
+    color: #8a33fd;
+
+    &.active {
+      color: #ffffff;
+      background: #8a33fd;
+      border: none!important;
+    }
   }
 
 }
