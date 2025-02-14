@@ -3,7 +3,9 @@
 {
   "name": "Node.js & TypeScript",
   // Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
-  "image": "mcr.microsoft.com/devcontainers/typescript-node:20",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "app",
+  "workspaceFolder": "/workspace",
   // Features to add to the dev container. More info: https://containers.dev/features.
   "features": {
     "node": {
@@ -26,9 +28,9 @@
     }
   },
   // Use 'forwardPorts' to make a list of ports inside the container available locally.
-  "forwardPorts": [],
+  "forwardPorts": [3000, 4200, 27017],
   // Use 'postCreateCommand' to run commands after the container is created.
-  "postCreateCommand": "bash /workspaces/project-name/.devcontainer/post-create.sh",
+  "postCreateCommand": "bash /workspaces/angular-nest-marketplace/.devcontainer/post-create.sh",
   // Use 'postStartCommand' to run commands after the container is started.
   "postStartCommand": "",
   // Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
