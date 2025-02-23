@@ -24,7 +24,9 @@
   // Configure tool-specific properties.
   "customizations": {
     "vscode": {
-      "extensions": []
+      "extensions": [
+        "Postman.postman-for-vscode"
+      ]
     }
   },
   // Use 'forwardPorts' to make a list of ports inside the container available locally.
