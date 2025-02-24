@@ -69,7 +69,7 @@ p-accordion-header {
     }
   }
 
-  .auth-button {
+  .header-button {
     @apply px-[48px] py-[9px] text-center text-lg font-medium font-family h-[46px] inline-block rounded-lg;
     border: 1px solid #3c4242;
     color: #8a33fd;
@@ -80,6 +80,15 @@ p-accordion-header {
       border: none!important;
     }
   }
+
+  .auth-button {
+    @apply flex rounded-lg justify-center items-center w-xl border p-4 border-[#3c4242] cursor-pointer
+  }
+
+  .auth-input {
+    @apply w-xl border p-4 rounded-lg mb-4
+  }
+
 
 }
 
