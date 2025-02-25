@@ -9,7 +9,12 @@ import { CommonModule, NgOptimizedImage } from '@angular/common';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LoginComponent implements OnInit {
+  isPasswordVisibility: boolean = false;
   ngOnInit(): void {
     console.log(1);
+  }
+
+  togglePasswordVisibility() {
+    this.isPasswordVisibility = !this.isPasswordVisibility
   }
 }

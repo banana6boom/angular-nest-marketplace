@@ -4,8 +4,15 @@
 
 @theme {
   --font-family: "Causten", sans-serif;
-  --second-family: "CoreSansC", sans-serif;
 }
+
+:root {
+  --coresans-family: "CoreSans", sans-serif;
+  --color-gray-custom: #807d7e;
+}
+
+
+
 
 $color-header: #807d7e;
 $color-active: #3c4242;
@@ -21,14 +28,9 @@ p-accordion-header {
   background-color: #3c4242 !important;
 }
 
-.p-accordion-panel {
-
-}
 
 .p-accordioncontent-content {
-
   background-color: #3c4242 !important;
-
   p {
     color: #f6f6f6;
   }
@@ -41,6 +43,12 @@ p-accordion-header {
 }
 
 @layer components {
+
+  .font-coresans {
+    font-family: var(--coresans-family);
+    font-weight: 400;
+  }
+
   .footer-title {
     @apply font-family;
     font-weight: 700;
@@ -82,11 +90,11 @@ p-accordion-header {
   }
 
   .auth-button {
-    @apply flex rounded-lg justify-center items-center w-xl border p-4 border-[#3c4242] cursor-pointer
+    @apply flex rounded-lg justify-center items-center w-xl max-w-full border p-4 border-[#3c4242] cursor-pointer
   }
 
   .auth-input {
-    @apply w-xl border p-4 rounded-lg mb-4
+    @apply w-xl max-w-full border p-4 rounded-lg mb-4
   }
 
 
