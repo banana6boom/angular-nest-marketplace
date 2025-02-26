@@ -30,10 +30,10 @@ export class HeaderComponent {
   isLogged: boolean = false;
 
   languages = [
-    { label: 'English (united States)', value: 'en-US' },
-    { label: 'Русский (Россия)', value: 'ru-RU' },
+    { label: 'English (United States)', value: 'en-US' },
+    { label: 'Russian (Russia)', value: 'ru-RU' },
     { label: 'Français (France)', value: 'fr-FR' },
   ];
 
-  selectedLanguage = 'en-US';
+  selectedLanguage: string = 'en-US';
 }
