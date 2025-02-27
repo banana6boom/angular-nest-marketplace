@@ -11,6 +11,7 @@ module.exports = [
   {
     files: ['**/*.ts'],
     rules: {
+      "@angular-eslint/template/prefer-ngsrc": "off",
       '@angular-eslint/directive-selector': [
         'error',
         {

@@ -1,5 +1,5 @@
 <header class="border-b border-[#bebcbd]">
-  <div class="container mx-auto max-w-[1240px] pt-[32px] pb-[32px]">
+  <div class="container mx-auto pt-[32px] pb-[32px]">
     <div class="flex items-center justify-between">
       <a [routerLink]="['/']" class="flex items-center">
         <svg width="93" height="45" viewBox="0 0 93 45" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -73,7 +73,7 @@
         </div>
       }
       @if (!isLogged) {
-        <div class="language">
+        <div class="ml-[200px] font-family language">
           <p-dropdown
             [options]="languages"
             [(ngModel)]="selectedLanguage">
@@ -81,10 +81,10 @@
         </div>
 
         <div class="auth space-x-[29px]">
-          <a [routerLink]="['/']" class="auth-button font-medium active">
+          <a [routerLink]="['/login']" routerLinkActive="active" class="header-button font-medium">
             Login
           </a>
-          <a [routerLink]="['/']" class="auth-button font-medium">
+          <a [routerLink]="['/register']" routerLinkActive="active"  class="header-button font-medium">
             Sign Up
           </a>
         </div>

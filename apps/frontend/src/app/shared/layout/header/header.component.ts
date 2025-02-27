@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterLink } from '@angular/router';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 import { IconField } from 'primeng/iconfield';
 import { InputIcon } from 'primeng/inputicon';
 import { FloatLabel } from 'primeng/floatlabel';
@@ -20,6 +20,7 @@ import { InputText } from 'primeng/inputtext';
     DropdownModule,
     FormsModule,
     InputText,
+    RouterLinkActive,
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
@@ -29,10 +30,9 @@ export class HeaderComponent {
   isLogged: boolean = false;
 
   languages = [
-    { label: 'English (united States)', value: 'en-US' },
-    { label: 'Русский (Россия)', value: 'ru-RU' },
-    { label: 'Français (France)', value: 'fr-FR' },
+    { label: 'English (United States)', value: 'en-US' },
+    { label: 'Russian (Russia)', value: 'ru-RU' },
   ];
 
-  selectedLanguage = 'en-US';
+  selectedLanguage: string = 'en-US';
 }
