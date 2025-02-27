@@ -9,6 +9,10 @@ export default [
     path: 'register',
     loadComponent: () =>
       import('./components/register/register.component').then(c => c.RegisterComponent),
+  },{
+    path: 'reset-create',
+    loadComponent: () =>
+      import('./components/reset/reset.component').then(c => c.ResetComponent),
   },
 ] as Routes;
 
