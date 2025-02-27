@@ -8,7 +8,6 @@
 
 :root {
   --coresans-family: "CoreSans", sans-serif;
-  --color-gray-custom: #807d7e;
 }
 
 
@@ -52,6 +51,10 @@ p-accordion-header {
   .font-coresans {
     font-family: var(--coresans-family);
     font-weight: 400;
+  }
+
+  .color-text-base {
+    color: #807d7e;
   }
 
   .footer-title {
@@ -99,7 +102,7 @@ p-accordion-header {
   }
 
   .auth-input {
-    @apply w-xl max-w-full border p-4 rounded-lg mb-4
+    @apply w-xl max-w-full border p-4 rounded-lg
   }
 
 

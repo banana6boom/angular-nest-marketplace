@@ -32,7 +32,6 @@ export class HeaderComponent {
   languages = [
     { label: 'English (United States)', value: 'en-US' },
     { label: 'Russian (Russia)', value: 'ru-RU' },
-    { label: 'Français (France)', value: 'fr-FR' },
   ];
 
   selectedLanguage: string = 'en-US';
