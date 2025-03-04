@@ -11,9 +11,9 @@ import { RouterLink } from '@angular/router';
 })
 export class RegisterComponent {
   isPasswordVisible: boolean = false;
-  isVerification: boolean = true;
+  isVerification: boolean = false;
   isCheckEmail: boolean = false;
-  isSingUp: boolean = false;
+  isSingUp: boolean = true;
 
   togglePasswordVisibility() {
     this.isPasswordVisible = !this.isPasswordVisible;
