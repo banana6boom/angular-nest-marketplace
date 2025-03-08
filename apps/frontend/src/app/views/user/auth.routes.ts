@@ -10,9 +10,13 @@ export default [
     loadComponent: () =>
       import('./components/register/register.component').then(c => c.RegisterComponent),
   },{
-    path: 'reset-create',
+    path: 'reset-password',
     loadComponent: () =>
       import('./components/reset/reset.component').then(c => c.ResetComponent),
+  },{
+    path: 'verification',
+    loadComponent: () =>
+      import('./components/verification/verification.component').then(c => c.VerificationComponent),
   },
 ] as Routes;
 
