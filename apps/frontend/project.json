@@ -8,12 +8,17 @@
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:application",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/apps/frontend",
         "index": "apps/frontend/src/index.html",
         "browser": "apps/frontend/src/main.ts",
-        "polyfills": ["zone.js", "@angular/localize/init"],
+        "polyfills": [
+          "zone.js",
+          "@angular/localize/init"
+        ],
         "tsConfig": "apps/frontend/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "assets": [
@@ -23,7 +28,9 @@
           },
           "apps/frontend/src/assets"
         ],
-        "styles": ["apps/frontend/src/assets/styles/styles.scss"],
+        "styles": [
+          "apps/frontend/src/assets/styles/styles.scss"
+        ],
         "scripts": []
       },
       "configurations": {
@@ -45,7 +52,13 @@
         "development": {
           "optimization": false,
           "extractLicenses": false,
-          "sourceMap": true
+          "sourceMap": true,
+          "fileReplacements": [
+            {
+              "replace": "apps/frontend/src/environments/environment.ts",
+              "with": "apps/frontend/src/environments/environment.development.ts"
+            }
+          ]
         }
       },
       "defaultConfiguration": "production"
@@ -76,7 +89,9 @@
     },
     "test": {
       "executor": "@nx/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "outputs": [
+        "{workspaceRoot}/coverage/{projectRoot}"
+      ],
       "options": {
         "jestConfig": "apps/frontend/jest.config.ts"
       }

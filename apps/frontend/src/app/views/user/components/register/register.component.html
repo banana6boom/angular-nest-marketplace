@@ -1,14 +1,14 @@
 <section class="flex flex-col sm:flex-row min-h-screen overflow-hidden">
   @if (isSingUp) {
     <div class="sm:w-1/2 w-full">
-      <img class="w-full sm:h-full object-cover"
+      <img class="w-full h-auto object-cover"
            alt="image login"
            priority
            width="695" height="956"
            [ngSrc]="'assets/images/sing-up-page.png'"
            i18n-alt="@@imageLogin">
     </div>
-    <div class="sm:w-1/2 w-full flex flex-col items-center px-4">
+    <form [formGroup]="formRegister" (ngSubmit)="onSubmit()" class="sm:w-1/2 w-full flex flex-col items-center px-4">
       <div class="sm:pt-[90px] mb-10 sm:mb-[120px] max-w-full">
         <h1 class="font-semibold font-coresans text-3xl sm:text-4xl text-left">Sign Un</h1>
         <h3 class="text-gray-600/80 mt-[10px] font-family text-base sm:text-sm text-left">Sign up for free to access to
@@ -39,10 +39,19 @@
         fill="#47ACDF" />
       </svg><a class="font-medium font-family text-xl text-[#8a33fd]" href="#">Continue With Twitter</a>
       </span>
-        <div class="mb-[30px] mt-[50px] flex flex-col gap-2 color-text-base">
+        <div class="mt-[50px] flex flex-col gap-2 color-text-base">
           <label class="font-normal font-family text-lg" for="username">Email Address</label>
-          <input pInputText id="username" placeholder="designer@gmail.com" class="auth-input"
-                 aria-describedby="username-help" />
+          <input pInputText id="username"
+                 placeholder="designer@gmail.com"
+                 class="auth-input"
+                 formControlName="email"
+                 aria-describedby="username-help"
+                 [ngStyle]="{'border-color': email?.invalid && (email?.dirty || email?.touched) ? 'red' : '' }" />
+          <div class="font-family min-h-[30px] text-red-500 text-base">
+            @if (email?.errors?.['required'] && (email?.dirty || email?.touched)) {
+              <span>* Email is required to fill out</span>
+            }
+          </div>
         </div>
         <div class="flex flex-col gap-2 color-text-base">
           <div class="flex justify-between">
@@ -73,23 +82,50 @@
           </div>
           <input
             type="{{ isPasswordVisible ? 'text' : 'password' }}"
-            pInputText id="password" class="auth-input" aria-describedby="password-help" />
-          <div class="font-family text-base color-text-base">Use 8 or more characters with a mix of letters, numbers &
-            symbols
+            formControlName="password"
+            pInputText id="password" class="auth-input"
+            [ngStyle]="{'border-color': password?.invalid && (password?.dirty || password?.touched) ? 'red' : '' }"
+            aria-describedby="password-help" />
+          <div class="font-family min-h-[30px] text-red-500 text-base">
+            @if (password?.errors?.['required'] && (password?.dirty || password?.touched)) {
+              <span>* Password is required to fill out</span>
+            }
+            @if (password?.errors?.['pattern'] && (password?.dirty || password?.touched)) {
+              <span class="text-[#3c4242]">Use 8 or more characters with a mix of letters, numbers & symbols</span>
+            }
           </div>
+
         </div>
-        <div class="auth-checkbox mt-[30px] flex items-start color-text-base">
-          <input type="checkbox" formControlName="agree" id="remember" class="signup-checkbox" />
-          <label class="ml-2 font-family" for="remember">Agree to our <a class="underline cursor-pointer"
-                                                                         [routerLink]="['/#']">Terms of
-            use</a> and <a class="underline cursor-pointer"
-                           [routerLink]="['/#']">Privacy Policy</a></label>
+        <div class="flex flex-col">
+          <div class="auth-checkbox mt-[20px] flex items-start color-text-base">
+            <input type="checkbox"
+                   formControlName="agreePrivate"
+                   id="remember"
+                   class="signup-checkbox" />
+            <label class="ml-2 font-family" for="remember">
+              Agree to our <a class="underline cursor-pointer" [routerLink]="['/#']">Terms of use</a> and
+              <a class="underline cursor-pointer" [routerLink]="['/#']">Privacy Policy</a>
+            </label>
+          </div>
+          <span class="text-red-500 text-sm ml-6"
+                [style.visibility]="agreePrivate?.invalid && (agreePrivate?.dirty || agreePrivate?.touched) ? 'visible' : 'hidden'">
+              * The field is mandatory for filling out
+          </span>
         </div>
-        <div class="auth-checkbox flex mt-[18px] items-start color-text-base">
-          <input type="checkbox" formControlName="agree" id="news" class="signup-checkbox" />
-          <label class="ml-2 font-family" for="news">Subscribe to our monthly newsletter</label>
+        <div class="flex flex-col">
+          <div class="auth-checkbox flex items-start color-text-base">
+            <input type="checkbox" formControlName="agreeSubscribe" id="news" class="signup-checkbox" />
+            <label class="ml-2 font-family" for="news">Subscribe to our monthly newsletter</label>
+          </div>
+          <span class="text-red-500 text-sm ml-6"
+                [style.visibility]="agreeSubscribe?.invalid && (agreeSubscribe?.dirty || agreeSubscribe?.touched) ? 'visible' : 'hidden'">
+              * The field is mandatory for filling out
+          </span>
         </div>
-        <button type="button"
+
+
+        <button type="submit"
+                [disabled]="formRegister.invalid"
                 class="w-[167px] bg-purple-600 text-white text-lg p-3 rounded-lg mt-[50px] cursor-pointer">
           Sign Up
         </button>
@@ -97,7 +133,7 @@
           Already have an account? <a [routerLink]="['/login']" class="underline">Log in</a>
         </div>
       </div>
-    </div>
+    </form>
   } @else if (isVerification) {
     <div class="sm:w-1/2 w-full">
       <img class="w-full sm:h-full object-cover"
@@ -122,7 +158,7 @@
         </button>
       </div>
     </div>
-  } @else if(isCheckEmail) {
+  } @else if (isCheckEmail) {
     <div class="sm:w-1/2 w-full">
       <img class="w-full sm:h-full object-cover"
            alt="image CheckEmail"

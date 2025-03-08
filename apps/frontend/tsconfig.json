@@ -9,6 +9,9 @@
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true
   },
+//  "paths" : {
+//    "@env" : ["src/app/f"]
+//  },
   "files": [],
   "include": [],
   "references": [
