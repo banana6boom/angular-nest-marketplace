@@ -4,22 +4,23 @@ import { appRoutes } from './app.routes';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { providePrimeNG } from 'primeng/config';
 import Aura from '@primeng/themes/aura';
-import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
+import { AuthInterceptor } from './core/auth/auth.interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(appRoutes),
-    provideHttpClient(),
+    provideHttpClient(withInterceptors([AuthInterceptor])),
     provideAnimationsAsync(),
     providePrimeNG({
       ripple: true, // Включает эффект ripple (инициализация PrimeNG API)
       theme: {
         preset: Aura,
         options: {
-          darkModeSelector: '.my-app-dark'
-        }
-      }
-    })
+          darkModeSelector: '.my-app-dark',
+        },
+      },
+    }),
   ],
 };
