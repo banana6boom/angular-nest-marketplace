@@ -1,3 +1,4 @@
+<p-toast position="bottom-right"></p-toast>
 <section class="flex flex-col sm:flex-row min-h-screen overflow-hidden" xmlns="http://www.w3.org/1999/html">
   <div class="sm:w-1/2 w-full">
     <img class="w-full sm:h-full object-cover"
@@ -7,7 +8,7 @@
          [ngSrc]="'assets/images/sing-in-page.png'"
          i18n-alt="@@imageLogin">
   </div>
-  <div class="sm:w-1/2 w-full flex flex-col items-center px-4">
+  <form class="sm:w-1/2 w-full flex flex-col items-center px-4">
     <div class="sm:pt-[90px] mb-10 sm:mb-[120px] max-w-full">
       <h1 class="font-semibold font-coresans text-3xl sm:text-4xl text-left">Sign In</h1>
       <span class="auth-button mt-[50px]">
@@ -85,5 +86,5 @@
         Don’t have an account? <a [routerLink]="['/register']" class="underline">Sign up</a>
       </div>
     </div>
-  </div>
+  </form>
 </section>
