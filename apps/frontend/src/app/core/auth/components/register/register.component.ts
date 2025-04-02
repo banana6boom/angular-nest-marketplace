@@ -12,7 +12,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { SignupInterface } from '../../../../core/auth/types/signup.interface';
+import { AuthorizationInterface } from '../../types/authorization.interface';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../../../../core/auth/auth.service';
 import { DefaultResponseInterface } from '../../../../shared/types/default-response.interface';
@@ -87,7 +87,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
       return;
     }
 
-    const newUser: SignupInterface = { email, password };
+    const newUser: AuthorizationInterface = { email, password };
 
     this.subscription = this.authService.register(newUser).subscribe({
       next: (data: CurrentUserInterface | DefaultResponseInterface): void => {
