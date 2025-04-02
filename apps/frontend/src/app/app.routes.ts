@@ -9,7 +9,7 @@ export const appRoutes: Route[] = [
     children: [
       {path: '', component: MainComponent},
       {path: '',
-      loadChildren: () => import('./views/user/auth.routes')},
+      loadChildren: () => import('./core/auth/auth.routes')},
     ]
   }
 ];
