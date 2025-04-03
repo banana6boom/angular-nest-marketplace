@@ -13,7 +13,7 @@ import { FloatLabel } from 'primeng/floatlabel';
 import { DropdownModule } from 'primeng/dropdown';
 import { FormsModule } from '@angular/forms';
 import { InputText } from 'primeng/inputtext';
-import { AuthService } from '../../../core/auth/auth.service';
+import { AuthService } from '../../../core/auth/services/auth.service';
 import { Subscription } from 'rxjs';
 import { ProfileInterface } from '../../../core/auth/types/profile.interface';
 

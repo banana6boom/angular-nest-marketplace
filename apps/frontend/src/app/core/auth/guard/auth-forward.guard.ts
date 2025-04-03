@@ -1,6 +1,6 @@
 import { CanActivateFn } from '@angular/router';
 import { inject } from '@angular/core';
-import { AuthService } from './auth.service';
+import { AuthService } from '../services/auth.service';
 import { Location } from '@angular/common';
 
 export const authForwardGuard: CanActivateFn = (route, state) => {

@@ -2,7 +2,7 @@ import { HttpInterceptorFn } from '@angular/common/http';
 import { inject } from '@angular/core';
 import { AuthService } from './auth.service';
 import { catchError, switchMap, tap, throwError } from 'rxjs';
-import { LoginInterface } from './types/login.interface';
+import { LoginInterface } from '../types/login.interface';
 import { Router } from '@angular/router';
 
 export const AuthInterceptor: HttpInterceptorFn = (req, next) => {

@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { AuthorizationInterface } from './types/authorization.interface';
+import { AuthorizationInterface } from '../types/authorization.interface';
 import { catchError, Observable, Subject, tap, throwError } from 'rxjs';
-import { DefaultResponseInterface } from '../../shared/types/default-response.interface';
-import { environment } from '../../../environments/environment';
-import { CurrentUserInterface } from './types/current-user.interface';
-import { LoginInterface } from './types/login.interface';
-import { ProfileInterface } from './types/profile.interface';
+import { DefaultResponseInterface } from '../../../shared/types/default-response.interface';
+import { environment } from '../../../../environments/environment';
+import { CurrentUserInterface } from '../types/current-user.interface';
+import { LoginInterface } from '../types/login.interface';
+import { ProfileInterface } from '../types/profile.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -14,7 +14,6 @@ import { ProfileInterface } from './types/profile.interface';
 export class AuthService {
   static accessTokenKey: string = 'accessToken';
   static refreshTokenKey: string = 'refreshToken';
-  public userIdKey: string = 'userId';
 
   public isLogged$: Subject<boolean> = new Subject<boolean>();
   public isLogged: boolean = false;
