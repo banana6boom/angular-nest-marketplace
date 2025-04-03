@@ -12,11 +12,11 @@ import { ProfileInterface } from '../types/profile.interface';
   providedIn: 'root',
 })
 export class AuthService {
-  static accessTokenKey: string = 'accessToken';
-  static refreshTokenKey: string = 'refreshToken';
+  static accessTokenKey = 'accessToken';
+  static refreshTokenKey = 'refreshToken';
 
   public isLogged$: Subject<boolean> = new Subject<boolean>();
-  public isLogged: boolean = false;
+  public isLogged = false;
 
   constructor(private http: HttpClient) {
     this.isLogged = !!localStorage.getItem(AuthService.accessTokenKey);

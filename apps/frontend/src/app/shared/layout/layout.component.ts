@@ -1,9 +1,4 @@
-import {
-  Component,
-  inject,
-  OnDestroy,
-  OnInit,
-} from '@angular/core';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
@@ -23,19 +18,25 @@ import { filter, Subject, takeUntil } from 'rxjs';
 export class LayoutComponent implements OnInit, OnDestroy {
   private router = inject(Router);
   private route = inject(ActivatedRoute);
-  isFooterVisible: boolean = true;
+  isFooterVisible = true;
   private destroy$ = new Subject<void>();
 
-  ngOnInit() {
+  ngOnInit(): void {
+    this.checkFooterVisibility();
+
     this.router.events
       .pipe(
         filter((event) => event instanceof NavigationEnd),
         takeUntil(this.destroy$), // Отписка при уничтожении компонента
       )
       .subscribe(() => {
-        const currentRoute = this.route.firstChild?.snapshot;
-        this.isFooterVisible = !currentRoute?.data?.['hideFooter']; // Используем данные маршрута для скрытия футера
+        this.checkFooterVisibility();
       });
+  }
+
+  private checkFooterVisibility(): void {
+    const currentRoute = this.route.firstChild?.snapshot;
+    this.isFooterVisible = !currentRoute?.data?.['hideFooter'];
   }
 
   ngOnDestroy() {

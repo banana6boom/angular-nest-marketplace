@@ -46,7 +46,7 @@ import { LoginInterface } from '../../types/login.interface';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RegisterComponent implements OnInit, OnDestroy {
-  public isPasswordVisible: boolean = false;
+  public isPasswordVisible = false;
   public formRegister!: FormGroup;
   private destroy$ = new Subject<void>();
 

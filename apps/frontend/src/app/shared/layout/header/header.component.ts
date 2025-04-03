@@ -69,5 +69,5 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.subscription?.unsubscribe();
   }
 
-  selectedLanguage: string = 'en-US';
+  selectedLanguage = 'en-US';
 }
