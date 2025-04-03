@@ -20,15 +20,45 @@ export class AuthService {
     throw new UnauthorizedException('Invalid credentials');
   }
 
-
   async register(createUserDto: CreateUserDto) {
     return this.usersService.create(createUserDto);
   }
 
+  async updateRefreshToken(userId: string, refreshToken: string) {
+    const hashedToken = await bcrypt.hash(refreshToken, 10);
+    await this.usersService.updateUser(userId, { refreshToken: hashedToken });
+  }
+
+  async refresh(refreshToken: string) {
+    const user = await this.usersService.findUserByRefreshToken(refreshToken);
+    if (!user) {
+      throw new UnauthorizedException('Invalid refresh token');
+    }
+
+    // Проверяем refresh_token через bcrypt
+    const isMatch = await bcrypt.compare(refreshToken, user.refreshToken);
+    if (!isMatch) {
+      throw new UnauthorizedException('Invalid refresh token');
+    }
+
+    return this.login(user);
+  }
+
   async login(user: any) {
-    const payload = { email: user.email, sub: user._id };
+    // Payload для access_token может быть минимальным
+    const accessPayload = { email: user.email, sub: user._id };
+
+    // Payload для refresh_token может содержать только id или другие минимальные данные
+    const refreshPayload = { sub: user._id }; // Например, не включаем email
+
+    const accessToken = this.jwtService.sign(accessPayload, { expiresIn: '3m' });
+    const refreshToken = this.jwtService.sign(refreshPayload, { expiresIn: '7d' });
+
+    await this.updateRefreshToken(user._id, refreshToken); // Сохраняем refresh_token
+
     return {
-      access_token: this.jwtService.sign(payload),
+      access_token: accessToken,
+      refresh_token: refreshToken,
     };
   }
 }

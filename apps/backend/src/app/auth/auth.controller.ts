@@ -18,7 +18,13 @@ export class AuthController {
 
   @UseGuards(LocalAuthGuard)
   @Post('login')
-  async login(@Request() req) {
-    return this.authService.login(req.user);
+  async login(@Body() body: { email: string, password: string }) {
+    const user = await this.authService.validateUser(body.email, body.password);
+    return this.authService.login(user);
+  }
+
+  @Post('refresh')
+  async refresh(@Body() body: { refreshToken: string }) {
+    return this.authService.refresh(body.refreshToken);
   }
 }

@@ -18,4 +18,17 @@ export class UsersService {
   async findOne(email: string): Promise<UserDocument | null> {
     return this.userModel.findOne({ email }).lean().exec();
   }
+
+  async updateUser(userId: string, updateData: Partial<User>) {
+    return this.userModel.updateOne({ _id: userId }, updateData).exec();
+  }
+
+  async findUserByRefreshToken(refreshToken: string): Promise<User | null> {
+    return this.userModel.findOne({ refreshToken: { $exists: true } }).exec();
+  }
+
+  async updateRefreshToken(userId: string, refreshToken: string) {
+    const hashedToken = await bcrypt.hash(refreshToken, 10);
+    return this.userModel.findByIdAndUpdate(userId, { refreshToken: hashedToken }, { new: true });
+  }
 }
