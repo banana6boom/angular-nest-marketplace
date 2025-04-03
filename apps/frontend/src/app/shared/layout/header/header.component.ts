@@ -12,10 +12,10 @@ import { InputIcon } from 'primeng/inputicon';
 import { FloatLabel } from 'primeng/floatlabel';
 import { DropdownModule } from 'primeng/dropdown';
 import { FormsModule } from '@angular/forms';
-import { Button } from 'primeng/button';
 import { InputText } from 'primeng/inputtext';
 import { AuthService } from '../../../core/auth/auth.service';
 import { Subscription } from 'rxjs';
+import { ProfileInterface } from '../../../core/auth/types/profile.interface';
 
 @Component({
   selector: 'app-header',
@@ -37,6 +37,8 @@ import { Subscription } from 'rxjs';
 export class HeaderComponent implements OnInit, OnDestroy {
   private authService: AuthService = inject(AuthService);
   private subscription: Subscription | null = null;
+  private subscription2: Subscription | null = null;
+  user: any = {};
 
   isLogged: boolean = this.authService.getLoggedIn();
 
@@ -51,6 +53,16 @@ export class HeaderComponent implements OnInit, OnDestroy {
         this.isLogged = isLogged;
       },
     );
+
+    this.authService.getUser().subscribe({
+      next: (data: ProfileInterface): void => {
+        this.user = data;
+        console.log('User data:', this.user);
+      },
+      error: (error: Error): void => {
+        console.log('Error:', error);
+      },
+    });
   }
 
   ngOnDestroy(): void {

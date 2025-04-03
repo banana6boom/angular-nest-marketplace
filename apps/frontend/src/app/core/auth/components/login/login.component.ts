@@ -98,8 +98,8 @@ export class LoginComponent implements OnInit, OnDestroy {
           }
 
           this.authService.setToken(
-            AuthService.accessTokenKey,
             loginResponse.access_token,
+            loginResponse.refresh_token,
           );
 
           return this.router.navigate(['/']);
