@@ -24,41 +24,40 @@ export class AuthService {
     return this.usersService.create(createUserDto);
   }
 
-  async updateRefreshToken(userId: string, refreshToken: string) {
-    const hashedToken = await bcrypt.hash(refreshToken, 10);
-    await this.usersService.updateUser(userId, { refreshToken: hashedToken });
-  }
-
-  async refresh(refreshToken: string) {
-    const user = await this.usersService.findUserByRefreshToken(refreshToken);
-    if (!user) {
-      throw new UnauthorizedException('Invalid refresh token');
-    }
-
-    // Проверяем refresh_token через bcrypt
-    const isMatch = await bcrypt.compare(refreshToken, user.refreshToken);
-    if (!isMatch) {
-      throw new UnauthorizedException('Invalid refresh token');
-    }
-
-    return this.login(user);
-  }
-
   async login(user: any) {
-    // Payload для access_token может быть минимальным
     const accessPayload = { email: user.email, sub: user._id };
+    const refreshPayload = { sub: user._id };
 
-    // Payload для refresh_token может содержать только id или другие минимальные данные
-    const refreshPayload = { sub: user._id }; // Например, не включаем email
-
-    const accessToken = this.jwtService.sign(accessPayload, { expiresIn: '3m' });
+    const accessToken = this.jwtService.sign(accessPayload, { expiresIn: '10s' }); // 10 секунд
     const refreshToken = this.jwtService.sign(refreshPayload, { expiresIn: '7d' });
 
-    await this.updateRefreshToken(user._id, refreshToken); // Сохраняем refresh_token
-
+    await this.updateRefreshToken(user._id, refreshToken);
     return {
       access_token: accessToken,
       refresh_token: refreshToken,
     };
+  }
+
+  async refresh(refreshToken: string) {
+    const users = await this.usersService.findAll(); // Добавь findAll в UsersService
+    let validUser = null;
+
+    for (const user of users) {
+      if (user.refreshToken && (await bcrypt.compare(refreshToken, user.refreshToken))) {
+        validUser = user;
+        break;
+      }
+    }
+
+    if (!validUser) {
+      throw new UnauthorizedException('Invalid refresh token');
+    }
+
+    return this.login(validUser);
+  }
+
+  async updateRefreshToken(userId: string, refreshToken: string) {
+    const hashedToken = await bcrypt.hash(refreshToken, 10);
+    await this.usersService.updateUser(userId, { refreshToken: hashedToken });
   }
 }
