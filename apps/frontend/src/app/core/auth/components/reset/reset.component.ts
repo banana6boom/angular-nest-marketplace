@@ -10,10 +10,10 @@ import { RouterLink } from '@angular/router';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ResetComponent {
-  isResetPassword: boolean = false;
-  isCreateNewPassword: boolean = true;
+  isResetPassword = false;
+  isCreateNewPassword = true;
 
-  isPasswordVisible: boolean = false;
+  isPasswordVisible = false;
 
   togglePasswordVisibility() {
     this.isPasswordVisible = !this.isPasswordVisible;

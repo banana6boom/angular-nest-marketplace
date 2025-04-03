@@ -6,9 +6,9 @@
          priority
          width="695" height="956"
          [ngSrc]="'assets/images/sing-in-page.png'"
-         i18n-alt="@@imageLogin">
+         i18n-alt="@@imageLogin" />
   </div>
-  <form [formGroup]="formLogin" (ngSubmit)="onSingIn()" class="sm:w-1/2 w-full flex flex-col items-center px-4">
+  <form class="sm:w-1/2 w-full flex flex-col items-center px-4" [formGroup]="formLogin" (ngSubmit)="onSingIn()" >
     <div class="sm:pt-[90px] mb-10 sm:mb-[120px] max-w-full">
       <h1 class="font-semibold font-coresans text-3xl sm:text-4xl text-left">Sign In</h1>
       <span class="auth-button mt-[50px]">
@@ -80,16 +80,18 @@
           formControlName="password"
           [ngStyle]="{'border-color': controls.password?.invalid &&
                  (controls.password?.dirty || controls.password?.touched) ? 'red' : ''}"
-          pInputText type="password" id="password" class="auth-input" aria-describedby="password-help" />
+          pInputText id="password" class="auth-input" aria-describedby="password-help" />
       </div>
       <div class="flex justify-end mb-[30px]">
-        <a [routerLink]="['/reset-create']" class="mt-[10px] text-base text-[#3c4242] font-family underline">Forgot your
+        <a [routerLink]="['/reset-password']" class="mt-[10px] text-base text-[#3c4242] font-family underline">Forgot
+          your
           password</a>
       </div>
-      <button type="submit" [disabled]="formLogin.invalid"
-              class="w-[167px] bg-purple-600 text-white text-lg p-3 rounded-lg cursor-pointer">
-        Sign
-        In
+      <button type="submit"
+              [disabled]="formLogin.invalid"
+              [ngClass]="{'submit-button': formLogin.invalid, 'border-purple-600 bg-purple-600': !formLogin.invalid}"
+              class="w-[167px] text-white text-lg p-3 rounded-lg mt-[50px] border cursor-pointer">
+        Sign In
       </button>
       <div class="text-base font-family text-left mt-2 text-[#3c4242]">
         Don’t have an account? <a [routerLink]="['/register']" class="underline">Sign Up</a>

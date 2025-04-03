@@ -96,6 +96,15 @@ p-accordion-header {
     }
   }
 
+  button {
+    transition: background-color 0.3s, border-color 0.3s;
+  }
+
+  .submit-button {
+    border: 1px solid #3c4242;
+    color: #8a33fd!important;
+  }
+
   .auth-button {
     @apply flex rounded-lg justify-center items-center w-xl max-w-full border p-4 border-[#3c4242] cursor-pointer
   }

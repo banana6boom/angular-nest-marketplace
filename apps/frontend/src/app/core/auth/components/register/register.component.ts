@@ -13,13 +13,23 @@ import {
   Validators,
 } from '@angular/forms';
 import { AuthorizationInterface } from '../../types/authorization.interface';
-import { Subscription } from 'rxjs';
-import { AuthService } from '../../../../core/auth/auth.service';
+import {
+  catchError,
+  EMPTY,
+  Subject,
+  Subscription,
+  switchMap,
+  takeUntil,
+  tap,
+  throwError,
+} from 'rxjs';
+import { AuthService } from '../../services/auth.service';
 import { DefaultResponseInterface } from '../../../../shared/types/default-response.interface';
 import { CurrentUserInterface } from '../../../../core/auth/types/current-user.interface';
 import { MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
 import { HttpErrorResponse } from '@angular/common/http';
+import { LoginInterface } from '../../types/login.interface';
 
 @Component({
   selector: 'app-register',
@@ -36,9 +46,9 @@ import { HttpErrorResponse } from '@angular/common/http';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RegisterComponent implements OnInit, OnDestroy {
-  public isPasswordVisible: boolean = false;
+  public isPasswordVisible = false;
   public formRegister!: FormGroup;
-  private subscription: Subscription | null = null;
+  private destroy$ = new Subject<void>();
 
   get controls(): any {
     return this.formRegister.controls;
@@ -72,54 +82,61 @@ export class RegisterComponent implements OnInit, OnDestroy {
   }
 
   onSubmit(): void {
-    if (!this.formRegister.valid) {
-      return;
-    }
-
-    const { email, password, agreePrivate } = this.formRegister.value;
-
-    if (!agreePrivate) {
+    if (!this.formRegister.valid || !this.formRegister.value.agreePrivate) {
       this.messageService.add({
         severity: 'warn',
         summary: 'Warning',
-        detail: 'You must accept the privacy policy',
+        detail:
+          'You must accept the privacy policy and fill out the form correctly',
       });
       return;
     }
 
+    const { email, password } = this.formRegister.value;
     const newUser: AuthorizationInterface = { email, password };
 
-    this.subscription = this.authService.register(newUser).subscribe({
-      next: (data: CurrentUserInterface | DefaultResponseInterface): void => {
-        if ((data as DefaultResponseInterface).message !== undefined) {
+    this.authService
+      .register(newUser)
+      .pipe(
+        switchMap((data: CurrentUserInterface | DefaultResponseInterface) => {
+          if ('message' in data) {
+            this.messageService.add({
+              severity: 'error',
+              summary: 'Error!',
+              detail: data.message,
+            });
+            return EMPTY;
+          }
+
+          const registerResponse = data as CurrentUserInterface;
+          if (!registerResponse._id) {
+            this.messageService.add({
+              severity: 'danger',
+              summary: 'Error!',
+              detail: 'Ошибка при регистрации',
+            });
+            return EMPTY;
+          }
+
           this.messageService.add({
-            severity: 'danger',
-            summary: 'Error!',
-            detail: (data as DefaultResponseInterface).message,
+            severity: 'success',
+            summary: 'Success!',
+            detail: 'You have successfully registered',
           });
-          return;
-        }
-
-        this.messageService.add({
-          severity: 'success',
-          summary: 'Success!',
-          detail: 'You have successfully registered',
-        });
-
-        setTimeout(() => {
-          this.router.navigate(['/verification']);
-        }, 3000);
-      },
-      error: (errorResponse: HttpErrorResponse) => {
-        const error: string =
-          errorResponse.error?.message || 'Registration error';
-        this.messageService.add({
-          severity: 'error',
-          summary: 'Error!',
-          detail: error,
-        });
-      },
-    });
+          return this.router.navigate(['/verification']);
+        }),
+        catchError((err: HttpErrorResponse) => {
+          const errorMessage = err.error?.message || 'Register error';
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Error!',
+            detail: errorMessage,
+          });
+          return EMPTY;
+        }),
+        takeUntil(this.destroy$),
+      )
+      .subscribe();
   }
 
   togglePasswordVisibility() {
@@ -127,6 +144,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.subscription?.unsubscribe();
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 }

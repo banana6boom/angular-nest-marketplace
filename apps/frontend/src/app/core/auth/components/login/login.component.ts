@@ -14,8 +14,16 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { Subscription, switchMap, tap } from 'rxjs';
-import { AuthService } from '../../auth.service';
+import {
+  catchError,
+  EMPTY,
+  Subject,
+  Subscription,
+  switchMap,
+  takeUntil,
+  tap,
+} from 'rxjs';
+import { AuthService } from '../../services/auth.service';
 import { AuthorizationInterface } from '../../types/authorization.interface';
 import { DefaultResponseInterface } from '../../../../shared/types/default-response.interface';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -36,9 +44,9 @@ import { LoginInterface } from '../../types/login.interface';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LoginComponent implements OnInit, OnDestroy {
-  isPasswordVisible: boolean = false;
+  isPasswordVisible = false;
   formLogin!: FormGroup;
-  private subscription: Subscription | null = null;
+  private destroy$ = new Subject<void>();
 
   constructor(
     private authService: AuthService,
@@ -68,27 +76,32 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   onSingIn(): void {
     if (!this.formLogin.valid) {
+      this.messageService.add({
+        severity: 'warn',
+        summary: 'Warning',
+        detail: 'Please fill out the form correctly',
+      });
       return;
     }
 
     const { email, password } = this.formLogin.value;
     const user: AuthorizationInterface = { email, password };
-    this.subscription = this.authService
+    this.authService
       .login(user)
       .pipe(
-        tap((data: LoginInterface | DefaultResponseInterface) => {
+        switchMap((data) => {
+          // Если сервер вернул ошибку
           if ('message' in data) {
             this.messageService.add({
-              severity: 'danger',
+              severity: 'error',
               summary: 'Error!',
               detail: data.message,
             });
-            throw new Error('Login failed');
+            return EMPTY; // Завершаем поток
           }
-        }),
-        switchMap((data) => {
+
           const loginResponse = data as LoginInterface;
-          if (!loginResponse.access_token) {
+          if (!loginResponse.access_token && !loginResponse.refresh_token) {
             this.messageService.add({
               severity: 'danger',
               summary: 'Error!',
@@ -98,26 +111,28 @@ export class LoginComponent implements OnInit, OnDestroy {
           }
 
           this.authService.setToken(
-            AuthService.accessTokenKey,
             loginResponse.access_token,
+            loginResponse.refresh_token,
           );
 
           return this.router.navigate(['/']);
         }),
-      )
-      .subscribe({
-        error: (err: HttpErrorResponse) => {
-          const error: string = err.error?.message || 'Login error';
+        catchError((err: HttpErrorResponse) => {
+          const errorMessage = err.error?.message || 'Login error';
           this.messageService.add({
             severity: 'error',
             summary: 'Error!',
-            detail: error,
+            detail: errorMessage,
           });
-        },
-      });
+          return EMPTY;
+        }),
+        takeUntil(this.destroy$),
+      )
+      .subscribe();
   }
 
   ngOnDestroy(): void {
-    this.subscription?.unsubscribe();
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 }

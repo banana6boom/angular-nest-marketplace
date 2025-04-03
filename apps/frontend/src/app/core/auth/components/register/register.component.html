@@ -125,9 +125,9 @@
 
       <button type="submit"
               [disabled]="formRegister.invalid"
-              [ngClass]="{'bg-[#807d7e]': formRegister.invalid, 'bg-purple-600': !formRegister.invalid}"
+              [ngClass]="{'submit-button': formRegister.invalid, 'border-purple-600 bg-purple-600': !formRegister.invalid}"
               [ngStyle]="{'cursor': formRegister.invalid ? 'not-allowed' : 'pointer'}"
-              class="w-[167px] bg-purple-600 text-white text-lg p-3 rounded-lg mt-[50px] cursor-pointer">
+              class="w-[167px] text-white text-lg p-3 rounded-lg mt-[50px] border cursor-pointer">
         Sign Up
       </button>
       <div class="text-base font-family text-left mt-2 text-[#3c4242]">

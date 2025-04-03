@@ -1,3 +1,5 @@
 <app-header/>
 <router-outlet/>
-<app-footer/>
+@if (isFooterVisible) {
+  <app-footer/>
+}
