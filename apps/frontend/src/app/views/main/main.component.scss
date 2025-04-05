@@ -1,0 +1,105 @@
+:host ::ng-deep {
+  .p-carousel-content {
+    gap: 0 !important;
+
+    .slide {
+      height: 100vh;
+      position: relative;
+
+      .slide-img {
+        width: 100%;
+        object-fit: cover;
+        object-position: top center;
+      }
+
+      .content {
+        position: absolute;
+        top: 129px;
+        left: 193px;
+        color: white;
+        z-index: 1;
+      }
+
+      p-button {
+        .p-button {
+          width: 250px !important;
+          height: 61px !important;
+          border: none !important;
+          border-radius: 8px !important;
+          background: white !important;
+          color: #000 !important;
+          font-family: "Causten", sans-serif;
+          font-weight: 700 !important;
+          font-size: 24px !important;
+        }
+      }
+    }
+
+    .p-carousel-prev-button button {
+      position: absolute !important;
+      top: 60% !important;
+      left: 40px !important;
+      z-index: 2;
+
+      &:hover {
+        background: transparent;
+      }
+    }
+
+    .p-carousel-next-button button {
+      position: absolute !important;
+      top: 60% !important;
+      right: 40px !important;
+      z-index: 2;
+
+      &:hover {
+        background: transparent;
+      }
+    }
+  }
+
+  .p-carousel {
+    .p-carousel-content-container {
+      ul {
+        position: absolute !important;
+        gap: 0 !important;
+        bottom: 0 !important;
+        left: 50%;
+        transform: translate(-50%, 500%);
+        z-index: 2;
+        display: flex;
+        padding: 0;
+        margin: 0;
+        list-style: none;
+
+        .p-carousel-indicator {
+          button.p-carousel-indicator-button {
+            width: 62px;
+            height: 10px;
+            border: none;
+            background-color: rgba(255, 255, 255, 0.3);
+            padding: 0;
+            transition: background-color 0.3s;
+            border-radius: 0;
+            cursor: pointer;
+          }
+
+          &:first-child button.p-carousel-indicator-button {
+            border-top-left-radius: 999px;
+            border-bottom-left-radius: 999px;
+          }
+
+          &:last-child button.p-carousel-indicator-button {
+            border-top-right-radius: 999px;
+            border-bottom-right-radius: 999px;
+          }
+
+          &.p-carousel-indicator-active button.p-carousel-indicator-button {
+            background-color: #fff;
+            width: 80px;
+          }
+        }
+      }
+    }
+  }
+}
