@@ -1,4 +1,29 @@
+<p-carousel
+  [value]="slides"
+  containerClass="custom-carousel"
+  [numVisible]="1"
+  [numScroll]="1"
+  [circular]="true"
+  [autoplayInterval]="10000"
+  [showNavigators]="true"
+  [showIndicators]="true"
+>
+  <ng-template pTemplate="previousicon">
+    <img src="assets/images/icons/carousel-control-prev.svg" width="24" height="45" />
+  </ng-template>
+  <ng-template pTemplate="nexticon">
+    <img src="assets/images/icons/carousel-control-next.svg" width="24" height="45" />
+  </ng-template>
 
-<div class="var(--color-reggg)">
-
-</div>
+  <ng-template pTemplate="item" let-item>
+    <div class="slide ">
+      <img [src]="item.image" alt="Slide Image" class="slide-img" />
+      <div class="content w-md">
+        <h4 class="font-coresans font-medium text-3xl mb-[40px]">{{ item.category }}</h4>
+        <h2 class="font-coresans font-extrabold text-7xl leading-[<20%>] mb-[40px]">{{ item.title }}</h2>
+        <p class="font-coresans font-medium text-3xl mb-[40px]">{{ item.description }}</p>
+        <p-button label="Shop Now" />
+      </div>
+    </div>
+  </ng-template>
+</p-carousel>
