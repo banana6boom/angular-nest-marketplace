@@ -7,6 +7,7 @@ import { CommonModule } from '@angular/common';
 import { Carousel } from 'primeng/carousel';
 import { GalleriaModule } from 'primeng/galleria';
 import { Button } from 'primeng/button';
+import { of } from 'rxjs';
 
 @Component({
   selector: 'app-main',
@@ -32,7 +33,47 @@ export class MainComponent implements OnInit {
     },
   ];
 
+  discounts = [
+    {
+      image: 'assets/images/discounts-main-one.png',
+      category: 'Low Price',
+      title: 'High Coziness',
+      description: 'UPTO 50% OFF',
+    },
+    {
+      image: 'assets/images/discounts-main-two.png',
+      category: 'Beyoung Presents',
+      title: 'Breezy Summer Style',
+      description: 'UPTO 50% OFF',
+    },
+  ];
+
+  newArrival = [
+    {
+      image: 'assets/images/arrival/item-1.png',
+      title: 'Knitted Joggers',
+    },
+    {
+      image: 'assets/images/arrival/item-2.png',
+      title: 'Full Sleeve',
+    },
+    {
+      image: 'assets/images/arrival/item-3.png',
+      title: 'Active T-Shirts',
+    },
+    {
+      image: 'assets/images/arrival/item-4.png',
+      title: 'Urban Shirts',
+    },
+    {
+      image: 'assets/images/arrival/item-5.png',
+      title: 'Plain T-Shirt',
+    },
+  ];
+
   constructor() {}
 
   ngOnInit() {}
+
+  protected readonly of = of;
 }
