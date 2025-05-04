@@ -30,7 +30,7 @@
 <section class="container flex justify-center gap-10 mx-auto mt-[130px]">
   @for (item of discounts; track item.title) {
     <div class="relative text-white rounded-2xl shadow-[2px_2px_10px_0_rgba(0,0,0,0.4)] group overflow-hidden">
-      <img [src]="item.image" alt="Discounts Image" class="h-[357px]" />
+      <img [src]="item.image" alt="Discounts Image" class="object-cover rounded-xl" />
       <div class="absolute top-0 w-xs pt-[57px] pl-[30px]">
         <h4 class="font-coresans font-extrabold text-lg mb-[24px]">{{ item.category }}</h4>
         <h2 class="font-coresans font-extrabold text-4xl leading-[<20%>] mb-[10px]">{{ item.title }}</h2>
