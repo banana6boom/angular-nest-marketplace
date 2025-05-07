@@ -1,6 +1,7 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  inject,
   OnInit,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -8,15 +9,27 @@ import { Carousel } from 'primeng/carousel';
 import { GalleriaModule } from 'primeng/galleria';
 import { Button } from 'primeng/button';
 import { of } from 'rxjs';
+import { CategoriesCardComponent } from '../../shared/components/categories-card/categories-card.component';
+import { CategoriesService } from '../../shared/services/categories.service';
+import { Categories } from '../../shared/types/categories';
 
 @Component({
   selector: 'app-main',
-  imports: [CommonModule, Carousel, GalleriaModule, Button],
+  imports: [
+    CommonModule,
+    Carousel,
+    GalleriaModule,
+    Button,
+    CategoriesCardComponent,
+  ],
   templateUrl: './main.component.html',
   styleUrl: './main.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MainComponent implements OnInit {
+  categories = inject(CategoriesService);
+  categoriesMen: Categories[] = [];
+  categoriesWoman: Categories[] = [];
   // В компоненте
   slides = [
     {
@@ -73,7 +86,8 @@ export class MainComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit() {}
-
-  protected readonly of = of;
+  ngOnInit() {
+    this.categoriesMen = this.categories.getCategoriesMen()
+    this.categoriesWoman = this.categories.getCategoriesWoman()
+  }
 }

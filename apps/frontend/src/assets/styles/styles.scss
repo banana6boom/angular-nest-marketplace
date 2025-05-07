@@ -11,9 +11,8 @@
   --coresans-family: "CoreSans", sans-serif;
 }
 
-
-
-$color-header: #807d7e;
+$color-categories: #2a2f2f;
+$color-grey: #807d7e;
 $color-active: #3c4242;
 
 
@@ -49,15 +48,6 @@ p-accordion-header {
 
 @layer components {
 
-  .font-coresans {
-    font-family: var(--coresans-family);
-    font-weight: 400;
-  }
-
-  .color-text-base {
-    color: #807d7e;
-  }
-
   .footer-title {
     @apply font-family;
     font-weight: 700;
@@ -79,7 +69,7 @@ p-accordion-header {
     @apply font-family;
     font-weight: 500;
     font-size: 22px;
-    color: $color-header;
+    color: $color-grey;
 
     &.active {
       color: $color-active;
