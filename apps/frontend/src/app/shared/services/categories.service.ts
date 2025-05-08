@@ -53,11 +53,11 @@ export class CategoriesService {
     },
   ];
 
-  getCategoriesMen() {
+  getCategoriesMen(): Categories[] {
     return this.categoriesMen;
   }
 
-  getCategoriesWoman() {
+  getCategoriesWoman(): Categories[] {
     return this.categoriesWomen;
   }
 

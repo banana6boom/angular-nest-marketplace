@@ -229,7 +229,7 @@
     </div>
   </div>
 </section>
-<section class="container mx-auto mt-[100px] mb-[100px]">
+<section class="container mx-auto mt-[100px]">
   <div class="flex items-center mb-[70px]">
     <span class="rounded-xl w-[8px] h-[37px] bg-[#8a33fd]"></span>
     <h2 class="text-4xl ml-4 font-semibold text-[#3c4242] ">Categories For Men</h2>
@@ -242,7 +242,7 @@
     </div>
   </div>
 </section>
-<section class="container mx-auto mt-[100px] mb-[100px]">
+<section class="container mx-auto mt-[100px]">
   <div class="flex items-center mb-[70px]">
     <span class="rounded-xl w-[8px] h-[37px] bg-[#8a33fd]"></span>
     <h2 class="text-4xl ml-4 font-semibold text-[#3c4242] ">Categories For Women</h2>
@@ -251,6 +251,32 @@
     <div class="flex flex-wrap gap-[50px]">
       @for (category of categoriesWoman; track category.category) {
         <app-categories-card [category]="category"></app-categories-card>
+      }
+    </div>
+  </div>
+</section>
+<section class="container mx-auto w-full h-[358px] bg-[#3c4242] rounded-xl mt-[100px]">
+  <div class="flex flex-col items-center">
+    <h2 class="text-5xl ml-4 font-bold mt-[43px] text-white">Top Brands Deal</h2>
+    <h3 class="mt-[30px] text-2xl font-normal text-white">Up To <span class="text-yellow-400">60%</span> off on brands</h3>
+    <div class="flex mt-[70px] gap-7">
+      <img class="transition-transform duration-200 transform hover:translate-y-[-8px]" src="/assets/images/top-brands-deal/nike.png" alt="NikeBrand">
+      <img class="transition-transform duration-200 transform hover:translate-y-[-8px]" src="/assets/images/top-brands-deal/hn.png" alt="HMBrand">
+      <img class="transition-transform duration-200 transform hover:translate-y-[-8px]" src="/assets/images/top-brands-deal/levis.png" alt="LevisBrand">
+      <img class="transition-transform duration-200 transform hover:translate-y-[-8px]" src="/assets/images/top-brands-deal/polo.png" alt="PoloBrand">
+      <img class="transition-transform duration-200 transform hover:translate-y-[-8px]" src="/assets/images/top-brands-deal/puma.png" alt="PumaBrand">
+  </div>
+  </div>
+</section>
+<section class="container mx-auto mt-[100px] mb-[100px]">
+  <div class="flex items-center mb-[70px]">
+    <span class="rounded-xl w-[8px] h-[37px] bg-[#8a33fd]"></span>
+    <h2 class="text-4xl ml-4 font-semibold text-[#3c4242]">In The Limelight</h2>
+  </div>
+  <div class="w-full flex justify-center">
+    <div class="flex flex-wrap gap-[50px]">
+      @for (productIn of productsInTheLimelight; track productIn.title) {
+        <app-product-card [productIn]="productIn"></app-product-card>
       }
     </div>
   </div>

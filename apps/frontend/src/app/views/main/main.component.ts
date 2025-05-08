@@ -12,6 +12,9 @@ import { of } from 'rxjs';
 import { CategoriesCardComponent } from '../../shared/components/categories-card/categories-card.component';
 import { CategoriesService } from '../../shared/services/categories.service';
 import { Categories } from '../../shared/types/categories';
+import { ProductCardComponent } from '../../shared/components/product-card/product-card.component';
+import { ProductService } from '../../shared/services/product.service';
+import { ProductType } from '../../shared/product.type';
 
 @Component({
   selector: 'app-main',
@@ -21,15 +24,18 @@ import { Categories } from '../../shared/types/categories';
     GalleriaModule,
     Button,
     CategoriesCardComponent,
+    ProductCardComponent,
   ],
   templateUrl: './main.component.html',
   styleUrl: './main.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MainComponent implements OnInit {
-  categories = inject(CategoriesService);
+  categoryService: CategoriesService = inject(CategoriesService);
+  productService: ProductService = inject(ProductService);
   categoriesMen: Categories[] = [];
   categoriesWoman: Categories[] = [];
+  productsInTheLimelight: ProductType[] = [];
   // В компоненте
   slides = [
     {
@@ -87,7 +93,8 @@ export class MainComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
-    this.categoriesMen = this.categories.getCategoriesMen()
-    this.categoriesWoman = this.categories.getCategoriesWoman()
+    this.categoriesMen = this.categoryService.getCategoriesMen();
+    this.categoriesWoman = this.categoryService.getCategoriesWoman();
+    this.productsInTheLimelight = this.productService.getProductInTheLimelight()
   }
 }

@@ -1,5 +1,6 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ProductType } from '../../product.type';
 
 @Component({
   selector: 'app-product-card',
@@ -8,4 +9,12 @@ import { CommonModule } from '@angular/common';
   styleUrl: './product-card.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ProductCardComponent {}
+export class ProductCardComponent {
+  @Input() productIn!: ProductType
+
+  liked:boolean = false;
+
+  toggleLike() {
+    this.liked = !this.liked;
+  }
+}
