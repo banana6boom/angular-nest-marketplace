@@ -1,0 +1,24 @@
+<div class="flex gap-1 items-center">
+  @for (item of stars(); track $index; let i = $index) {
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      class="transition-transform duration-200 hover:scale-110"
+      fill="none"
+    >
+      <defs>
+        <linearGradient id="halfGradient-{{i}}" x1="0" y1="0" x2="100%" y2="0">
+          <stop offset="50%" stop-color="#EDD146" />
+          <stop offset="50%" stop-color="#E1E1E1" />
+        </linearGradient>
+      </defs>
+      <path
+        d="M12 17.3L17.09 20.18L15.64 14.61L20.18 10.59L14.4 10.13L12 4.8L9.6 10.13L3.82 10.59L8.36 14.61L6.91 20.18L12 17.3Z"
+        [attr.fill]="getFill(i)"
+      />
+    </svg>
+  } @empty {
+    <p>Нет звезд для отображения</p>
+  }
+</div>

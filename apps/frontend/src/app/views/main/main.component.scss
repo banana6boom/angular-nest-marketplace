@@ -104,5 +104,26 @@
       }
     }
   }
+
+  .feedback-carousel {
+    .p-carousel-content {
+      display: flex !important;
+      justify-content: center !important;
+    }
+
+    .p-carousel-items-content {
+      display: flex !important;
+    }
+
+    .p-carousel-item-list {
+      gap: 70px!important;
+      justify-content: flex-end!important;
+    }
+
+    .p-carousel-item {
+      flex: 0 0 auto !important; // Не дает карточкам растягиваться
+      gap: 50px !important;
+    }
+  }
 }
 

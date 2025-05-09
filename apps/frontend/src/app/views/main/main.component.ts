@@ -15,6 +15,7 @@ import { Categories } from '../../shared/types/categories';
 import { ProductCardComponent } from '../../shared/components/product-card/product-card.component';
 import { ProductService } from '../../shared/services/product.service';
 import { ProductType } from '../../shared/product.type';
+import { RatingComponent } from '../../shared/components/rating/rating.component';
 
 @Component({
   selector: 'app-main',
@@ -25,6 +26,7 @@ import { ProductType } from '../../shared/product.type';
     Button,
     CategoriesCardComponent,
     ProductCardComponent,
+    RatingComponent,
   ],
   templateUrl: './main.component.html',
   styleUrl: './main.component.scss',
@@ -67,6 +69,33 @@ export class MainComponent implements OnInit {
     },
   ];
 
+  feedback = [
+    {
+      image: 'assets/images/feedback/feedback-person-1.png',
+      rating: 5,
+      name: 'Name',
+      description: 'Feedback',
+    },
+    {
+      image: 'assets/images/feedback/feedback-person-1.png',
+      rating: 5,
+      name: 'Name',
+      description: 'Feedback',
+    },
+    {
+      image: 'assets/images/feedback/feedback-person-1.png',
+      rating: 5,
+      name: 'Name',
+      description: 'Feedback',
+    },
+    {
+      image: 'assets/images/feedback/feedback-person-1.png',
+      rating: 5,
+      name: 'Name',
+      description: 'Feedback',
+    }
+  ];
+
   newArrival = [
     {
       image: 'assets/images/arrival/item-1.png',
@@ -95,6 +124,7 @@ export class MainComponent implements OnInit {
   ngOnInit() {
     this.categoriesMen = this.categoryService.getCategoriesMen();
     this.categoriesWoman = this.categoryService.getCategoriesWoman();
-    this.productsInTheLimelight = this.productService.getProductInTheLimelight()
+    this.productsInTheLimelight =
+      this.productService.getProductInTheLimelight();
   }
 }
