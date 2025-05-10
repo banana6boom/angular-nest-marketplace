@@ -73,27 +73,33 @@ export class MainComponent implements OnInit {
     {
       image: 'assets/images/feedback/feedback-person-1.png',
       rating: 5,
+      name: 'Floyd Miles',
+      description: 'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.',
+    },
+    {
+      image: 'assets/images/feedback/feedback-person-2.png',
+      rating: 3.5,
       name: 'Name',
+      description: 'ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.',
+    },
+    {
+      image: 'assets/images/feedback/feedback-person-3.png',
+      rating: 4,
+      name: 'Savannah Nguyen',
+      description: 'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet. Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.',
+    },
+    {
+      image: 'assets/images/feedback/feedback-person-4.png',
+      rating: 5,
+      name: 'Name Last',
       description: 'Feedback',
     },
     {
-      image: 'assets/images/feedback/feedback-person-1.png',
-      rating: 5,
+      image: 'assets/images/feedback/feedback-person-5.png',
+      rating: 4,
       name: 'Name',
       description: 'Feedback',
     },
-    {
-      image: 'assets/images/feedback/feedback-person-1.png',
-      rating: 5,
-      name: 'Name',
-      description: 'Feedback',
-    },
-    {
-      image: 'assets/images/feedback/feedback-person-1.png',
-      rating: 5,
-      name: 'Name',
-      description: 'Feedback',
-    }
   ];
 
   newArrival = [

@@ -106,24 +106,52 @@
   }
 
   .feedback-carousel {
+    width: 100%;
+    overflow: hidden;
+
     .p-carousel-content {
       display: flex !important;
       justify-content: center !important;
+      flex-wrap: wrap!important;
     }
 
     .p-carousel-items-content {
+      flex-wrap: wrap!important;
       display: flex !important;
+      justify-content: center !important; // Центровка карточек внутри
     }
 
     .p-carousel-item-list {
-      gap: 70px!important;
-      justify-content: flex-end!important;
+      display: flex;
+      gap: 38px !important;
+      justify-content: center !important;
     }
 
     .p-carousel-item {
-      flex: 0 0 auto !important; // Не дает карточкам растягиваться
-      gap: 50px !important;
+      flex: 0 0 auto !important;
+    }
+
+    .p-carousel-indicators {
+      display: flex !important;
+      justify-content: center !important;
+      margin-top: 1rem;
+    }
+
+    .p-carousel-indicator-list {
+      gap: 8px !important;
+    }
+
+    .p-carousel-indicator-button {
+      width: 10px !important;
+      height: 10px !important;
+      background: #d1d1d1 !important;
+      border-radius: 50%;
+    }
+
+    .p-carousel-indicator-active .p-carousel-indicator-button {
+      background: #3c4242 !important;
     }
   }
+
 }
 

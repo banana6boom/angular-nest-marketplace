@@ -29,12 +29,12 @@
 </p-carousel>
 <section class="container flex justify-center gap-10 mx-auto mt-[130px]">
   @for (item of discounts; track item.title) {
-    <div class="relative text-white rounded-2xl shadow-[2px_2px_10px_0_rgba(0,0,0,0.4)] group overflow-hidden">
-      <img [src]="item.image" alt="Discounts Image" class="object-cover rounded-xl" />
-      <div class="absolute top-0 w-xs pt-[57px] pl-[30px]">
-        <h4 class="font-coresans font-extrabold text-lg mb-[24px]">{{ item.category }}</h4>
+    <div class="relative text-white w-[50rem] group">
+      <img [src]="item.image" alt="Discounts Image" class="object-cover rounded-xl w-[50rem]" />
+      <div class="absolute top-0 w-xs pt-[97px] pl-[30px]">
+        <h4 class="font-coresans font-extrabold text-lg mb-[14px]">{{ item.category }}</h4>
         <h2 class="font-coresans font-extrabold text-4xl leading-[<20%>] mb-[10px]">{{ item.title }}</h2>
-        <p class="font-coresans font-medium text-base mb-[30px]">{{ item.description }}</p>
+        <p class="font-coresans font-medium text-base mb-[60px]">{{ item.description }}</p>
         <a href="#"
            class="text-xl font-extrabold relative inline-block
               after:content-[''] after:absolute after:left-0 after:bottom-0
@@ -304,18 +304,19 @@
       [numVisible]="3"
       [numScroll]="1"
       [circular]="false"
-      [autoplayInterval]="false"
+      [autoplayInterval]="5000"
       [showNavigators]="false"
       [showIndicators]="true"
     >
       <ng-template  pTemplate="item" let-item>
-        <div class="border-[1.8px] border-[#bebcbd] rounded-[10px] p-[23px] w-md h-[292px]">
+        <div class="border-[1.8px] border-[#bebcbd] rounded-[10px] p-6 w-[30rem] h-[292px]
+         sm:w-full md:w-[22rem] lg:w-[26rem] xl:w-[30rem]">
           <div class="flex justify-between">
             <div class="w-[57px] h-[57px] bg-cover bg-center" style="background-image: url('{{item.image}}')"></div>
             <app-rating [rating]="item.rating"></app-rating>
           </div>
-          <h2 class="mt-[20px] font-medium text-2xl text-[#3c4242] ">{{item.name}}</h2>
-          <p class="mt-[20px] font-normal text-1xl text-[#807d7e]">{{item.description}}</p>
+          <h2 class="mt-[20px] font-medium text-2xl text-[#3c4242]">{{item.name}}</h2>
+          <p class="mt-[20px] font-normal text-sm! text-[#807d7e]">{{item.description}}</p>
         </div>
       </ng-template>
     </p-carousel>
