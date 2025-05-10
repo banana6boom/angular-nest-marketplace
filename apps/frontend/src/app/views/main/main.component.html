@@ -1,6 +1,6 @@
 <p-carousel
   [value]="slides"
-  containerClass="custom-carousel"
+  class="main-carousel"
   [numVisible]="1"
   [numScroll]="1"
   [circular]="true"
@@ -9,13 +9,13 @@
   [showIndicators]="true"
 >
   <ng-template pTemplate="previousicon">
-    <img src="assets/images/icons/carousel-control-prev.svg" width="24" height="45" />
+    <img src="assets/images/icons/carousel-control-prev.svg" width="24" height="45" alt="carousel-control" />
   </ng-template>
   <ng-template pTemplate="nexticon">
-    <img src="assets/images/icons/carousel-control-next.svg" width="24" height="45" />
+    <img src="assets/images/icons/carousel-control-next.svg" width="24" height="45" alt="carousel-control" />
   </ng-template>
 
-  <ng-template pTemplate="item" let-item>
+  <ng-template class="main-carousel" pTemplate="item" let-item>
     <div class="slide ">
       <img [src]="item.image" alt="Slide Image" class="slide-img" />
       <div class="content w-md">
@@ -27,3 +27,297 @@
     </div>
   </ng-template>
 </p-carousel>
+<section class="container flex justify-center gap-10 mx-auto mt-[130px]">
+  @for (item of discounts; track item.title) {
+    <div class="relative text-white w-[50rem] group">
+      <img [src]="item.image" alt="Discounts Image" class="object-cover rounded-xl w-[50rem]" />
+      <div class="absolute top-0 w-xs pt-[97px] pl-[30px]">
+        <h4 class="font-coresans font-extrabold text-lg mb-[14px]">{{ item.category }}</h4>
+        <h2 class="font-coresans font-extrabold text-4xl leading-[<20%>] mb-[10px]">{{ item.title }}</h2>
+        <p class="font-coresans font-medium text-base mb-[60px]">{{ item.description }}</p>
+        <a href="#"
+           class="text-xl font-extrabold relative inline-block
+              after:content-[''] after:absolute after:left-0 after:bottom-0
+              after:h-[2px] after:bg-white after:w-0
+              group-hover:after:w-full after:transition-all after:duration-300">
+          Explore Items
+        </a>
+      </div>
+    </div>
+  }
+</section>
+<section class="container mx-auto mt-[100px]">
+  <div class="flex items-center mb-[70px]">
+    <span class="rounded-xl w-[8px] h-[37px] bg-[#8a33fd]"></span>
+    <h2 class="text-4xl ml-4 font-semibold text-[#3c4242]">New Arrival</h2>
+  </div>
+  <p-carousel
+    [value]="newArrival"
+    [numVisible]="4"
+    [numScroll]="1"
+    [circular]="true"
+    [autoplayInterval]="false"
+    [showNavigators]="true"
+    [showIndicators]="false"
+  >
+    <ng-template pTemplate="previousicon">
+      <img src="assets/images/icons/arrow-arrial-left.svg" width="13.59" height="12" alt="carousel-control" />
+    </ng-template>
+    <ng-template pTemplate="nexticon">
+      <img src="assets/images/icons/arrow-arrial-right.svg" width="13.59" height="12" alt="carousel-control" />
+    </ng-template>
+
+    <ng-template pTemplate="item" let-item>
+      <a href="#" class="arrival-slide pl-12 block w-[262px] h-[319px]">
+        <img [src]="item.image" alt="Slide Image" class="h-[262px] object-cover rounded-xl" />
+        <h3 class="font-family font-bold text-xl mt-[33px]">{{ item.title }}</h3>
+      </a>
+    </ng-template>
+  </p-carousel>
+</section>
+<section class="container mx-auto mt-[100px]">
+  <div class="flex items-center mb-[70px]">
+    <span class="rounded-xl w-[8px] h-[37px] bg-[#8a33fd]"></span>
+    <h2 class="text-4xl ml-4 font-semibold text-[#3c4242] ">Big Saving Zone</h2>
+  </div>
+  <div class="w-full">
+    <!-- Первый ряд -->
+    <div class="flex gap-[20px] mb-[15px]">
+      <div
+        class="flex-1 flex items-center bg-[url('/assets/images/saving_zone_person-5.png')] bg-cover bg-center rounded-xl h-[400px] md:h-[450px] lg:h-[500px]">
+        <div class="ml-[20px] font-coresans flex flex-col w-[11rem] font-semibold text-white">
+          <h1 class="text-[1.75rem]">Hawaiian Shirts</h1>
+          <h2 class="text-sm mt-[15px]">Dress up in summer vibe</h2>
+          <h3 class="text-lg mt-[10px]">UPTO 50% OFF</h3>
+          <div class="flex justify-center mt-[31px]">
+            <svg width="23" height="26" viewBox="0 0 23 26" fill="none" xmlns="http://www.w3.org/2000/svg"
+                 class="transform transition-transform hover:translate-y-[6px]">
+              <path
+                d="M11.5678 1.28613L11.5678 23.8893M22 15.1958L12.7972 24.3985C12.1182 25.0775 11.0173 25.0775 10.3383 24.3985L1.13557 15.1958"
+                stroke="white" stroke-width="2" stroke-linecap="round" />
+            </svg>
+          </div>
+          <a href="#"
+             class="self-center font-family font-medium text-xs! flex items-center justify-center mt-[40px] border border-white rounded text-white
+          w-[100px] h-[32px] text-sm
+          px-2 py-3
+          md:w-[111px] md:h-[34px] md:text-base md:px-2 md:py-4
+          hover:bg-white hover:text-black transition">
+            SHOP NOW
+          </a>
+        </div>
+      </div>
+      <div
+        class="flex-1 flex items-center justify-end bg-[url('/assets/images/saving_zone_person-4.png')] bg-cover bg-center rounded-xl h-[400px] md:h-[450px] lg:h-[500px]">
+        <div class="mr-[20px] ml-auto font-coresans flex flex-col w-[12.7rem] font-semibold text-white">
+          <div
+            class="bg-[#3c4242] text-xs rounded-[4px] px-2 py-4 w-[104px] h-[34px] text-white text-center flex items-center justify-center ml-auto">
+            Limited Stock
+          </div>
+          <h1 class="text-[1.75rem] mt-[30px] ml-auto">Printed<br> T-Shirt</h1>
+          <h2 class="text-sm mt-[15px] ml-auto">New Designs Every Week</h2>
+          <h3 class="text-lg mt-[10px] ml-auto">UPTO 40% OFF</h3>
+          <div class="mt-[31px] ml-auto pr-11">
+            <svg width="23" height="26" viewBox="0 0 23 26" fill="none" xmlns="http://www.w3.org/2000/svg"
+                 class="transform transition-transform hover:translate-y-[6px]">
+              <path
+                d="M11.5678 1.28613L11.5678 23.8893M22 15.1958L12.7972 24.3985C12.1182 25.0775 11.0173 25.0775 10.3383 24.3985L1.13557 15.1958"
+                stroke="white" stroke-width="2" stroke-linecap="round" />
+            </svg>
+          </div>
+          <a href="#"
+             class="self-center font-family font-medium text-xs! flex items-center justify-center mt-[40px] border border-white rounded text-white
+          w-[100px] h-[32px] text-sm
+          px-2 py-3
+          md:w-[111px] md:h-[34px] md:text-base md:px-2 md:py-4
+          hover:bg-white hover:text-black transition ml-auto">
+            SHOP NOW
+          </a>
+        </div>
+      </div>
+      <div
+        class="flex-1 flex items-center justify-start bg-[url('/assets/images/saving_zone_person-3.png')] bg-cover bg-center rounded-xl h-[400px] md:h-[450px] lg:h-[500px]">
+        <div class="mr-[17px] ml-auto font-coresans flex flex-col text-left w-[12rem] font-semibold color-active">
+          <h1 class="text-[1.75rem] mt-[30px]">Cargo Joggers</h1>
+          <h2 class="text-sm mt-[15px]">Move with style & comfort</h2>
+          <h3 class="text-lg mt-[10px]">UPTO 50% OFF</h3>
+          <div class="flex justify-center mt-[31px]">
+            <svg width="23" height="27" viewBox="0 0 23 27" fill="none" xmlns="http://www.w3.org/2000/svg"
+                 class="transform transition-transform hover:translate-y-[6px]">
+              <path
+                d="M11.5678 1.61938L11.5678 24.2225M22 15.529L12.7972 24.7318C12.1182 25.4108 11.0173 25.4108 10.3383 24.7318L1.13557 15.529"
+                stroke="#3C4242" stroke-width="2" stroke-linecap="round" />
+            </svg>
+          </div>
+          <a href="#"
+             class="self-center font-family font-medium text-xs! flex items-center justify-center mt-[40px] border border-[3c4242] rounded color-active
+            w-[111px] h-[34px] text-sm
+            px-2 py-3
+            md:w-[111px] md:h-[34px] md:text-base md:px-2 md:py-4
+            hover:bg-[#3c4242] hover:text-white hover:border-[#3c4242] transition">
+            SHOP NOW
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Второй ряд -->
+    <div class="flex gap-[20px]">
+      <div
+        class="flex-1 flex items-center justify-between bg-[url('/assets/images/saving_zone_person-2.png')] bg-cover bg-center rounded-xl h-[400px] md:h-[450px] lg:h-[500px]">
+        <div class="font-coresans flex flex-col text-left color-active ml-[60%] w-[10rem] font-semibold color-active">
+          <h1 class="text-4xl">Urban Shirts</h1>
+          <h2 class="font-medium text-base mt-[15px]">Live In Confort</h2>
+          <h3 class="text-xl mt-[15px]">FLAT 60% OFF</h3>
+          <div class="flex justify-center mt-[55px]">
+            <svg width="27" height="31" viewBox="0 0 23 27" fill="none" xmlns="http://www.w3.org/2000/svg"
+                 class="transform transition-transform hover:translate-y-[6px]">
+              <path
+                d="M11.5678 1.61938L11.5678 24.2225M22 15.529L12.7972 24.7318C12.1182 25.4108 11.0173 25.4108 10.3383 24.7318L1.13557 15.529"
+                stroke="#3C4242" stroke-width="2" stroke-linecap="round" />
+            </svg>
+          </div>
+          <a href="#"
+             class="self-center font-family font-medium text-xs! flex items-center justify-center mt-[55px] border-2 border-[3c4242] rounded color-active
+            w-[132px] h-[36px] text-sm
+            px-2 py-3
+            md:w-[111px] md:h-[34px] md:text-base md:px-2 md:py-4
+            hover:bg-[#3c4242] hover:text-white hover:border-[#3c4242] transition">
+            SHOP NOW
+          </a>
+        </div>
+      </div>
+      <div
+        class="flex-1 flex items-center justify-between bg-[url('/assets/images/saving_zone_person-1.png')] bg-cover bg-center rounded-xl h-[400px] md:h-[450px] lg:h-[500px]">
+        <div class="font-coresans flex flex-col text-left color-active ml-[60%] w-[10rem] font-semibold color-active">
+          <h1 class="text-4xl">Oversized <br>T-Shirts</h1>
+          <h2 class="font-medium text-base mt-[15px]">Street Style Icon</h2>
+          <h3 class="text-xl mt-[15px]">FLAT 60% OFF</h3>
+          <div class="flex justify-center mt-[55px]">
+            <svg width="27" height="31" viewBox="0 0 23 27" fill="none" xmlns="http://www.w3.org/2000/svg"
+                 class="transform transition-transform hover:translate-y-[6px]">
+              <path
+                d="M11.5678 1.61938L11.5678 24.2225M22 15.529L12.7972 24.7318C12.1182 25.4108 11.0173 25.4108 10.3383 24.7318L1.13557 15.529"
+                stroke="#3C4242" stroke-width="2" stroke-linecap="round" />
+            </svg>
+          </div>
+          <a href="#"
+             class="self-center font-family font-medium text-xs! flex items-center justify-center mt-[55px] border-2 border-[3c4242] rounded color-active
+            w-[132px] h-[36px] text-sm
+            px-2 py-3
+            md:w-[111px] md:h-[34px] md:text-base md:px-2 md:py-4
+            hover:bg-[#3c4242] hover:text-white hover:border-[#3c4242] transition">
+            SHOP NOW
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="w-full mt-[100px]">
+    <div class="flex">
+      <div
+        class="flex-1 flex justify-center items-center bg-[url('/assets/images/saving_zone-1.png')] bg-cover bg-center rounded-s-xl h-[640px]">
+        <div class="font-coresans text-white w-lg">
+          <h1 class="font-bold text-4xl">WE MADE YOUR EVERYDAY FASHION BETTER!</h1>
+          <h2 class="font-light text-base mt-[15px] w-sm">In our journey to improve everyday fashion, euphoria presents
+            EVERYDAY wear range - Comfortable & Affordable fashion 24/7</h2>
+          <a href="#"
+             class="self-center font-family font-medium flex items-center justify-center mt-[50px] rounded-lg color-active
+         w-[168px] h-[46px] text-lg bg-[#fff] text-[#3c4242] border-2 border-transparent
+         px-2 py-3 text-lg
+         md:w-[141px] md:h-[44px] md:text-base md:px-2 md:py-4
+         hover:bg-transparent hover:text-white hover:border-[#fff] transition">
+            Shop Now
+          </a>
+        </div>
+      </div>
+      <div class="flex-1 bg-[url('/assets/images/saving_zone-2.png')] bg-cover bg-center rounded-e-xl h-[640px]"></div>
+    </div>
+  </div>
+</section>
+<section class="container mx-auto mt-[100px]">
+  <div class="flex items-center mb-[70px]">
+    <span class="rounded-xl w-[8px] h-[37px] bg-[#8a33fd]"></span>
+    <h2 class="text-4xl ml-4 font-semibold text-[#3c4242] ">Categories For Men</h2>
+  </div>
+  <div class="w-full flex justify-center">
+    <div class="flex flex-wrap gap-[50px]">
+      @for (category of categoriesMen; track category.category) {
+        <app-categories-card [category]="category"></app-categories-card>
+      }
+    </div>
+  </div>
+</section>
+<section class="container mx-auto mt-[100px]">
+  <div class="flex items-center mb-[70px]">
+    <span class="rounded-xl w-[8px] h-[37px] bg-[#8a33fd]"></span>
+    <h2 class="text-4xl ml-4 font-semibold text-[#3c4242] ">Categories For Women</h2>
+  </div>
+  <div class="w-full flex justify-center">
+    <div class="flex flex-wrap gap-[50px]">
+      @for (category of categoriesWoman; track category.category) {
+        <app-categories-card [category]="category"></app-categories-card>
+      }
+    </div>
+  </div>
+</section>
+<section class="container mx-auto w-full h-[358px] bg-[#3c4242] rounded-xl mt-[100px]">
+  <div class="flex flex-col items-center">
+    <h2 class="text-5xl ml-4 font-bold mt-[43px] text-white">Top Brands Deal</h2>
+    <h3 class="mt-[30px] text-2xl font-normal text-white">Up To <span class="text-yellow-400">60%</span> off on brands
+    </h3>
+    <div class="flex mt-[70px] gap-7">
+      <img class="transition-transform duration-200 transform hover:translate-y-[-8px]"
+           src="/assets/images/top-brands-deal/nike.png" alt="NikeBrand">
+      <img class="transition-transform duration-200 transform hover:translate-y-[-8px]"
+           src="/assets/images/top-brands-deal/hn.png" alt="HMBrand">
+      <img class="transition-transform duration-200 transform hover:translate-y-[-8px]"
+           src="/assets/images/top-brands-deal/levis.png" alt="LevisBrand">
+      <img class="transition-transform duration-200 transform hover:translate-y-[-8px]"
+           src="/assets/images/top-brands-deal/polo.png" alt="PoloBrand">
+      <img class="transition-transform duration-200 transform hover:translate-y-[-8px]"
+           src="/assets/images/top-brands-deal/puma.png" alt="PumaBrand">
+    </div>
+  </div>
+</section>
+<section class="container mx-auto mt-[100px]">
+  <div class="flex items-center mb-[70px]">
+    <span class="rounded-xl w-[8px] h-[37px] bg-[#8a33fd]"></span>
+    <h2 class="text-4xl ml-4 font-semibold text-[#3c4242]">In The Limelight</h2>
+  </div>
+  <div class="w-full flex justify-center">
+    <div class="flex flex-wrap gap-[50px]">
+      @for (productIn of productsInTheLimelight; track productIn.title) {
+        <app-product-card [productIn]="productIn"></app-product-card>
+      }
+    </div>
+  </div>
+</section>
+<section class="container mx-auto mt-[100px] mb-[100px]">
+  <div class="flex items-center mb-[70px]">
+    <span class="rounded-xl w-[8px] h-[37px] bg-[#8a33fd]"></span>
+    <h2 class="text-4xl ml-4 font-semibold text-[#3c4242]">Feedback</h2>
+  </div>
+    <p-carousel
+      [value]="feedback"
+      class="feedback-carousel"
+      [numVisible]="3"
+      [numScroll]="1"
+      [circular]="false"
+      [autoplayInterval]="5000"
+      [showNavigators]="false"
+      [showIndicators]="true"
+    >
+      <ng-template  pTemplate="item" let-item>
+        <div class="border-[1.8px] border-[#bebcbd] rounded-[10px] p-6 w-[30rem] h-[292px]
+         sm:w-full md:w-[22rem] lg:w-[26rem] xl:w-[30rem]">
+          <div class="flex justify-between">
+            <div class="w-[57px] h-[57px] bg-cover bg-center" style="background-image: url('{{item.image}}')"></div>
+            <app-rating [rating]="item.rating"></app-rating>
+          </div>
+          <h2 class="mt-[20px] font-medium text-2xl text-[#3c4242]">{{item.name}}</h2>
+          <p class="mt-[20px] font-normal text-sm! text-[#807d7e]">{{item.description}}</p>
+        </div>
+      </ng-template>
+    </p-carousel>
+</section>

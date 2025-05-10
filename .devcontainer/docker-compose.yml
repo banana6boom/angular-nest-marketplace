@@ -4,7 +4,7 @@ services:
     image: mcr.microsoft.com/devcontainers/typescript-node:20
     container_name: typescript-node
     volumes:
-      - ..:/workspace:cached
+      - .:/workspace
     command: sleep infinity
     depends_on:
       - mongo

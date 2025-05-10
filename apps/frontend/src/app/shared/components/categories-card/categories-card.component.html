@@ -1,0 +1,26 @@
+@if (category) {
+  <div class="w-[270px] h-auto xs:w-full xs:h-auto overflow-hidden">
+    <div class="h-[393px] bg-cover bg-center" style="background-image: url('{{ category.image }}');"></div>
+    <div class="flex justify-between items-center mt-4 group">
+      <div class="cursor-pointer">
+        <h2 class="font-bold color-categories text-lg">{{ category.category }}</h2>
+        <h3 class="font-medium text-sm color-grey mt-2">{{ category.description }}</h3>
+      </div>
+
+      <svg
+        width="19"
+        height="13"
+        viewBox="0 0 19 13"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        class="mr-2 transform transition-transform group-hover:-translate-x-[-8px]"
+      >
+        <path
+          d="M18.5965 7.32149C18.9237 6.99427 18.9237 6.46374 18.5965 6.13651L13.2641 0.804107C12.9369 0.476884 12.4063 0.476884 12.0791 0.804107C11.7519 1.13133 11.7519 1.66186 12.0791 1.98909L16.819 6.729L12.0791 11.4689C11.7519 11.7961 11.7519 12.3267 12.0791 12.6539C12.4063 12.9811 12.9369 12.9811 13.2641 12.6539L18.5965 7.32149ZM0.128662 7.56691L18.004 7.56691V5.8911L0.128662 5.8911L0.128662 7.56691Z"
+          fill="#797979"
+        />
+      </svg>
+    </div>
+  </div>
+}
+
