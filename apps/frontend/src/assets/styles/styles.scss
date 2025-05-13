@@ -15,35 +15,37 @@ $color-categories: #2a2f2f;
 $color-grey: #807d7e;
 $color-active: #3c4242;
 
+.footer-best {
+  p-accordion-panel {
+    border-bottom: 1px solid rgba(190, 188, 189, 0.4) !important;
+    border-top: 1px solid rgba(190, 188, 189, 0.4) !important;
+  }
 
-p-accordion-panel {
-  border-bottom: 1px solid rgba(190, 188, 189, 0.4) !important;
-  border-top: 1px solid rgba(190, 188, 189, 0.4) !important;
-}
-
-p-accordion-header {
-  color: var(--primary-color) !important;
-  background-color: #3c4242 !important;
-}
+  p-accordion-header {
+    color: var(--primary-color) !important;
+    background-color: #3c4242 !important;
+  }
 
 
-.p-accordioncontent-content {
-  background-color: #3c4242 !important;
-  p {
-    color: #f6f6f6;
+  .p-accordioncontent-content {
+    background-color: #3c4242 !important;
+    p {
+      color: #f6f6f6;
+    }
+  }
+
+  .p-dropdown {
+    height: 44px !important;
+    border: none!important;
+    align-items: center!important;
+  }
+
+  .p-inputtext {
+    background: #f6f6f6!important;
+    border: none!important;
   }
 }
 
-.p-dropdown {
-  height: 44px !important;
-  border: none!important;
-  align-items: center!important;
-}
-
-.p-inputtext {
-  background: #f6f6f6!important;
-  border: none!important;
-}
 
 
 @layer components {
