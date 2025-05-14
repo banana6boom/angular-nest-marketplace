@@ -1,26 +1,15 @@
 <p-accordion
   class="flex flex-col w-[295px] !text-[#807d7e]"
-  [value]="['0']"
+  [value]="openedPanels"
   [multiple]="true"
+  (valueChange)="onAccordionChange($event)"
 >
   <p-accordion-panel value="0">
-    <p-accordion-header>
-      Filter
-    </p-accordion-header>
+    <p-accordion-header>Filter</p-accordion-header>
     <p-accordion-content>
-      <div
-        class="relative"
-        (mouseenter)="showOverlay($event)"
-        (mouseleave)="hideOverlay()"
-      >
-        <span class="cursor-pointer">Tops ></span>
-
-        <!-- overlay теперь внутри того же контейнера -->
-
-      </div>
+      <p-tieredMenu [model]="items" styleClass="custom-tiered-menu" appendTo="body"></p-tieredMenu>
     </p-accordion-content>
   </p-accordion-panel>
-  <!-- Остальные панели -->
   <p-accordion-panel value="1">
     <p-accordion-header>Price</p-accordion-header>
     <p-accordion-content>
@@ -45,12 +34,6 @@
       <p>Фильтр по стилю</p>
     </p-accordion-content>
   </p-accordion-panel>
-
 </p-accordion>
-<p-overlayPanel #op [showCloseIcon]="false" [dismissable]="false">
-  <p-tieredMenu
-    [model]="items"
-    [popup]="false"
-    styleClass="w-[200px]"
-  ></p-tieredMenu>
-</p-overlayPanel>
+
+

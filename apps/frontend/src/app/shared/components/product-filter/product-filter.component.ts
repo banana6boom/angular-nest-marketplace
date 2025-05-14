@@ -1,8 +1,22 @@
-import { ChangeDetectionStrategy, Component, ViewChild } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  HostListener,
+  OnDestroy,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Accordion, AccordionContent, AccordionHeader, AccordionPanel } from 'primeng/accordion';
+import {
+  Accordion,
+  AccordionContent,
+  AccordionHeader,
+  AccordionPanel,
+} from 'primeng/accordion';
 import { OverlayPanel, OverlayPanelModule } from 'primeng/overlaypanel';
 import { TieredMenu } from 'primeng/tieredmenu';
+import { Badge } from 'primeng/badge';
+import { MenuItem } from 'primeng/api';
 
 @Component({
   selector: 'app-product-filter',
@@ -20,34 +34,53 @@ import { TieredMenu } from 'primeng/tieredmenu';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductFilterComponent {
-  @ViewChild('op') overlay!: OverlayPanel;
-
-  // В вашем компоненте
-  items = [
+  items: MenuItem[] = [
     {
       label: 'Tops',
-      items: [
-        {label: 'Basic Tops'},
-        {label: 'Designer Tops'},
-        {
-          label: 'Sports',
-          items: [
-            {label: 'Tank Tops'},
-            {label: 'Training Tops'}
-          ]
-        }
-      ]
-    }
+      items: [{ label: 'Brand A' }, { label: 'Brand B' }, { label: 'Brand C' }],
+    },
+    {
+      label: 'Printed T-shirts',
+      items: [{ label: 'Brand A' }, { label: 'Brand B' }, { label: 'Brand C' }],
+    },
+    {
+      label: 'Plain T-shirts',
+      items: [{ label: 'Brand A' }, { label: 'Brand B' }, { label: 'Brand C' }],
+    },
+    {
+      label: 'Kurti',
+      items: [{ label: 'Brand A' }, { label: 'Brand B' }, { label: 'Brand C' }],
+    },
+    {
+      label: 'Boxers',
+      items: [{ label: 'Brand A' }, { label: 'Brand B' }, { label: 'Brand C' }],
+    },
+    {
+      label: 'Full sleeve T-shirts',
+      items: [{ label: 'Brand A' }, { label: 'Brand B' }, { label: 'Brand C' }],
+    },
+    {
+      label: 'Joggers',
+      items: [{ label: 'Brand A' }, { label: 'Brand B' }, { label: 'Brand C' }],
+    },
+    {
+      label: 'Payjamas',
+      items: [{ label: 'Brand A' }, { label: 'Brand B' }, { label: 'Brand C' }],
+    },
+    {
+      label: 'Jeans',
+      items: [{ label: 'Brand A' }, { label: 'Brand B' }, { label: 'Brand C' }],
+    },
   ];
 
-  timeout: any;
+  openedPanels: string[] = ['0'];
 
-  showOverlay(event: MouseEvent) {
-    clearTimeout(this.timeout);
-    this.overlay.show(event);
-  }
-
-  hideOverlay() {
-    this.timeout = setTimeout(() => this.overlay.hide(), 11200);
+  onAccordionChange(nextValues: any) {
+    const values = Array.isArray(nextValues) ? nextValues : [nextValues];
+    if (!values.includes('0')) {
+      this.openedPanels = ['0', ...values];
+    } else {
+      this.openedPanels = values;
+    }
   }
 }

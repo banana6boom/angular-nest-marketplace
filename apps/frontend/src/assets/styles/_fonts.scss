@@ -1,17 +1,23 @@
 @font-face {
-  src: url("../fonts/Causten-Semi-Bold.ttf");
+  src: url("../fonts/Causten-Bold.otf");
   font-family: Causten;
   font-weight: 700;
 }
 
 @font-face {
-  src: url("../fonts/Causten-Medium.ttf");
+  src: url("../fonts/Causten-SemiBold.otf");
+  font-family: Causten;
+  font-weight: 600;
+}
+
+@font-face {
+  src: url("../fonts/Causten-Medium.otf");
   font-family: Causten;
   font-weight: 500;
 }
 
 @font-face {
-  src: url("../fonts/Causten-Regular.ttf");
+  src: url("../fonts/Causten-Regular.otf");
   font-family: Causten;
   font-weight: 400;
 }

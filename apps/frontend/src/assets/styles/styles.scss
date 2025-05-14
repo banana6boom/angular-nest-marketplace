@@ -50,6 +50,12 @@ $color-active: #3c4242;
 
 @layer components {
 
+  $color-categories: #2a2f2f;
+  $color-grey: #807d7e;
+  .color-active {
+    color: #3c4242;
+  }
+
   .footer-title {
     @apply font-family;
     font-weight: 700;

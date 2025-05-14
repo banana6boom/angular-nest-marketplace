@@ -1,4 +1,6 @@
 :host ::ng-deep {
+
+
   .p-accordion {
     border-left: 1px solid #bebcbd;
     border-right: 1px solid #bebcbd;
@@ -6,6 +8,9 @@
     border-radius: 0 0 3px 3px;
     font-family: "Causten", sans-serif;
     color: #807d7e;
+    z-index: 100;
+    overflow: visible!important;
+    position: relative!important;
 
     .p-accordionpanel {
       &:last-child {
@@ -42,10 +47,29 @@
         font-weight: 600;
         font-size: 22px;
       }
+
+      .p-accordioncontent {
+        overflow: visible!important;
+        .p-accordioncontent-content {
+          .p-tieredmenu {
+            border: none;
+
+
+            .p-tieredmenu-item-link {
+              padding-right: 3px;
+              .p-tieredmenu-item-label {
+                font-family: "Causten", sans-serif;
+                font-weight: 500;
+                font-size: 18px;
+                color: #8a8989;
+              }
+            }
+
+
+          }
+        }
+
+      }
     }
-
-
   }
-
-
 }
