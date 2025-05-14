@@ -4,6 +4,7 @@
 
 @theme {
   --font-family: "Causten", sans-serif;
+  --coresans-family: "CoreSans", sans-serif;
   --color-reggg: #344343
 }
 
@@ -54,6 +55,10 @@ $color-active: #3c4242;
   $color-grey: #807d7e;
   .color-active {
     color: #3c4242;
+  }
+
+  .font-coresans {
+    font-family: 'Coresans', sans-serif;
   }
 
   .footer-title {
