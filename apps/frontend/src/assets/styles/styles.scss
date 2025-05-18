@@ -5,15 +5,10 @@
 @theme {
   --font-family: "Causten", sans-serif;
   --coresans-family: "CoreSans", sans-serif;
-  --color-reggg: #344343
-}
-
-:root {
-  --coresans-family: "CoreSans", sans-serif;
+  --color-reggg: #344343;
 }
 
 $color-categories: #2a2f2f;
-$color-grey: #807d7e;
 $color-active: #3c4242;
 
 .footer-best {
@@ -50,11 +45,13 @@ $color-active: #3c4242;
 
 
 @layer components {
-
-  $color-categories: #2a2f2f;
-  $color-grey: #807d7e;
   .color-active {
     color: #3c4242;
+  }
+
+
+  .color-gray {
+    color: #807d7e;
   }
 
   .font-coresans {
@@ -82,7 +79,7 @@ $color-active: #3c4242;
     @apply font-family;
     font-weight: 500;
     font-size: 22px;
-    color: $color-grey;
+    color: #807d7e;
 
     &.active {
       color: $color-active;

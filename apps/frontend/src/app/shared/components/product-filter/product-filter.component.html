@@ -13,25 +13,65 @@
   <p-accordion-panel value="1">
     <p-accordion-header>Price</p-accordion-header>
     <p-accordion-content>
-      <p>Фильтр по цене</p>
+      <div class="flex flex-col items-center mt-[42px]">
+        <p-slider
+          [(ngModel)]="priceRange"
+          [min]="min"
+          [max]="max"
+          [range]="true"
+          [style]="{ width: '230px' }"
+          [styleClass]="'custom-slider'"
+        ></p-slider>
+        <div class="flex gap-[30px] font-medium font-family text-base mt-[30px] mb-[35px]">
+          <div class="border border-[#bebcbd] flex justify-center items-end rounded-lg w-[97px] h-[32px]">
+            ${{ priceRange[0] }}
+          </div>
+          <div class="border border-[#bebcbd] flex justify-center items-end rounded-lg w-[97px] h-[32px]">
+            ${{ priceRange[1] }}
+          </div>
+        </div>
+      </div>
     </p-accordion-content>
   </p-accordion-panel>
   <p-accordion-panel value="2">
     <p-accordion-header>Colors</p-accordion-header>
     <p-accordion-content>
-      <p>Фильтр по цвету</p>
+      <div class="grid grid-cols-4 gap-4 mt-[20px]">
+        @for (color of colors; track color.name) {
+          <button class="flex flex-col items-center space-y-1 focus:outline-none cursor-pointer"
+                  (click)="selectColor(color.name)">
+            <div class="w-[36px] h-[36px] rounded-xl border-2 transition duration-200"
+                 [ngStyle]="{backgroundColor: color.value}"
+                 [ngClass]="{'border-black': selectorColor === color.name,
+                             'border-transparent': selectorColor !== color.name}"></div>
+            <span class="text-sm color-gray font-semibold">{{ color.name }}</span>
+          </button>
+
+        }
+      </div>
     </p-accordion-content>
   </p-accordion-panel>
   <p-accordion-panel value="3">
     <p-accordion-header>Size</p-accordion-header>
     <p-accordion-content>
-      <p>Фильтр по размеру</p>
+      <div class="grid grid-cols-3 mt-[20px] gap-3">
+        @for (size of sizes; track size) {
+          <button
+            (click)="toggleSize(size)"
+            class="border border-[#bebcbd] leading-none font-semibold flex items-center justify-center  rounded-lg w-[62px] h-[32px] text-sm transition-all duration-200"
+            [ngClass]="{'text-white bg-[#bebcbd]': selectedSizes.includes(size),
+                        'text-[#3c4242] hover:border-[#bebcbd]': !selectedSizes.includes(size)}"
+          >
+            {{ size }}
+          </button>
+        }
+      </div>
     </p-accordion-content>
   </p-accordion-panel>
   <p-accordion-panel value="4">
     <p-accordion-header>Dress Style</p-accordion-header>
     <p-accordion-content>
-      <p>Фильтр по стилю</p>
+      <p-tieredMenu class="mt-[20px]" [model]="itemsStyle" styleClass="custom-tiered-menu" appendTo="body"></p-tieredMenu>
     </p-accordion-content>
   </p-accordion-panel>
 </p-accordion>

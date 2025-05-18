@@ -5,23 +5,48 @@
     border-left: 1px solid #bebcbd;
     border-right: 1px solid #bebcbd;
     border-bottom: 1px solid #bebcbd;
-    border-radius: 0 0 3px 3px;
+    border-radius: 0 0 2px 2px;
     font-family: "Causten", sans-serif;
     color: #807d7e;
-    z-index: 100;
-    overflow: visible!important;
-    position: relative!important;
 
     .p-accordionpanel {
+      overflow: hidden!important;
       &:last-child {
+        animation: none!important;
+        transition: none!important;
         border-bottom: 0;
+        overflow: visible!important;
+
+        .p-accordionheader {
+          &:first-child {
+            cursor: auto;
+            .p-icon {
+              display: none !important;
+            }
+
+            &:before {
+              display: block;
+              content: '';
+              position: absolute;
+              right: 20px;
+              top: 50%;
+              transform: translateY(-50%);
+              width: 17px;
+              height: 20px;
+              background-image: url("data:image/svg+xml,%3Csvg width='17' height='20' viewBox='0 0 17 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2.83333 6.33333L2.83333 1.75M2.83333 18.25L2.83333 10M13.8333 18.25L13.8333 10M8.33333 18.25V13.6667M8.33333 10V1.75M13.8333 6.33333L13.8333 1.75M1 6.33333H4.66667M6.5 13.6667H10.1667M12 6.33333L15.6667 6.33333' stroke='%23807D7E' stroke-width='1.8' stroke-linecap='round'/%3E%3C/svg%3E");
+              background-size: contain;
+              background-repeat: no-repeat;
+            }
+          }
+        }
       }
 
       &:first-child {
+        overflow: visible!important;
+        z-index: 1000;
         .p-accordionheader {
-          position: relative;
-
           &:first-child {
+            cursor: auto;
             .p-icon {
               display: none !important;
             }
@@ -69,6 +94,28 @@
           }
         }
 
+        .p-slider-range {
+          background-color: #a855f7; // фиолетовая линия
+          height: 4px;
+        }
+
+        .p-slider-handle {
+          background-color: #a855f7; // фиолетовые кружки
+
+          &::before {
+            background-color: #a855f7;
+          }
+
+          &:focus-visible  {
+            outline: #a855f7;
+          }
+        }
+
+        .p-slider {
+          background-color: #ccc; // серая линия позади
+          height: 4px;
+          border-radius: 4px;
+        }
       }
     }
   }
